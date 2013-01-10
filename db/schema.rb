@@ -11,35 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110175643) do
+ActiveRecord::Schema.define(:version => 20130110181517) do
 
-  create_table "children", :force => true do |t|
-    t.string   "full_name"
-    t.date     "date_of_birth"
-    t.string   "email"
-    t.integer  "height"
-    t.integer  "shoes"
-    t.string   "hair"
-    t.string   "eyes"
-    t.boolean  "confirmed"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "men", :force => true do |t|
-    t.string   "full_name"
-    t.date     "date_of_birth"
-    t.string   "email"
-    t.integer  "height"
-    t.integer  "shoes"
-    t.string   "hair"
-    t.string   "eyes"
-    t.boolean  "confirmed"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "women", :force => true do |t|
+  create_table "models", :force => true do |t|
     t.string   "full_name"
     t.date     "date_of_birth"
     t.string   "email"
@@ -51,8 +25,11 @@ ActiveRecord::Schema.define(:version => 20130110175643) do
     t.integer  "bust"
     t.integer  "waist"
     t.integer  "heaps"
+    t.string   "type"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "models", ["type"], :name => "index_models_on_type"
 
 end

@@ -1,6 +1,17 @@
 require 'factory_girl'
 
-FactoryGirl.define do
+FactoryGirl.define do # TODO: DRY
+  factory :model do
+    sequence("full_name") {|n| "Model #{n}"}
+    sequence("date_of_birth") {|n| Date.today - 25.years}
+    email {"#{full_name.gsub(' ','')}@gmail.com"}
+    sequence("height") { Random.rand(150..200) }
+    sequence("shoes") { 38 + Random.rand(0..6) }
+    hair {["blond", "black", "brown"].sample}
+    eyes {["blue", "brown", "grey", "green"].sample}
+    confirmed true
+  end
+
   factory :woman do
     sequence("full_name") {|n| "Inara Serra #{n}"}
     sequence("date_of_birth") {|n| Date.today - Random.rand(18..25).years}
