@@ -1,0 +1,43 @@
+<h1>Listing women</h1>
+
+<table>
+  <tr>
+    <th>Full name</th>
+    <th>Date of birth</th>
+    <th>Email</th>
+    <th>Height</th>
+    <th>Shoes</th>
+    <th>Hair</th>
+    <th>Eyes</th>
+    <th>Confirmed</th>
+    <th>Bust</th>
+    <th>Waist</th>
+    <th>Heaps</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @women.each do |woman| %>
+  <tr>
+    <td><%= woman.full_name %></td>
+    <td><%= woman.date_of_birth %></td>
+    <td><%= woman.email %></td>
+    <td><%= woman.height %></td>
+    <td><%= woman.shoes %></td>
+    <td><%= woman.hair %></td>
+    <td><%= woman.eyes %></td>
+    <td><%= woman.confirmed %></td>
+    <td><%= woman.bust %></td>
+    <td><%= woman.waist %></td>
+    <td><%= woman.heaps %></td>
+    <td><%= link_to 'Show', woman %></td>
+    <td><%= link_to 'Edit', edit_woman_path(woman) %></td>
+    <td><%= link_to 'Destroy', woman, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Woman', new_woman_path %>

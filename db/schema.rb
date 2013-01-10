@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110111001) do
+ActiveRecord::Schema.define(:version => 20130110121045) do
 
   create_table "men", :force => true do |t|
     t.string   "full_name"
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(:version => 20130110111001) do
     t.string   "hair"
     t.string   "eyes"
     t.boolean  "confirmed"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "women", :force => true do |t|
+    t.string   "full_name"
+    t.date     "date_of_birth"
+    t.string   "email"
+    t.integer  "height"
+    t.integer  "shoes"
+    t.string   "hair"
+    t.string   "eyes"
+    t.boolean  "confirmed"
+    t.integer  "bust"
+    t.integer  "waist"
+    t.integer  "heaps"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
