@@ -1,4 +1,7 @@
 Okmodelagency::Application.routes.draw do
+  resources :children
+
+
   resources :women
 
 

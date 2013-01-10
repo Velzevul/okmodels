@@ -2,7 +2,7 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :woman do
-    sequence("full_name") {|n| "Anna Johnson #{n}"}
+    sequence("full_name") {|n| "Inara Serra #{n}"}
     sequence("date_of_birth") {|n| Date.today - Random.rand(18..25).years}
     email {"#{full_name.gsub(' ','')}@gmail.com"}
     sequence("height") { Random.rand(150..180) }
@@ -16,11 +16,22 @@ FactoryGirl.define do
   end
 
   factory :man do
-    sequence("full_name") {|n| "John Smith #{n}"}
+    sequence("full_name") {|n| "Malcolm Raynolds #{n}"}
     sequence("date_of_birth") {|n| Date.today - Random.rand(20..30).years}
     email {"#{full_name.gsub(' ','')}@gmail.com"}
     sequence("height") { Random.rand(160..200) }
     sequence("shoes") { 40 + Random.rand(0..4) }
+    hair {["blond", "black", "brown"].sample}
+    eyes {["blue", "brown", "grey", "green"].sample}
+    confirmed true
+  end
+
+  factory :child do
+    sequence("full_name") {|n| "River Tam #{n}"}
+    sequence("date_of_birth") {|n| Date.today - Random.rand(10..17).years}
+    email {"#{full_name.gsub(' ','')}@gmail.com"}
+    sequence("height") { Random.rand(150..160) }
+    sequence("shoes") { 30 + Random.rand(0..8) }
     hair {["blond", "black", "brown"].sample}
     eyes {["blue", "brown", "grey", "green"].sample}
     confirmed true
