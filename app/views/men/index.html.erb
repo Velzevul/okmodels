@@ -1,0 +1,37 @@
+<h1>Listing men</h1>
+
+<table>
+  <tr>
+    <th>Full name</th>
+    <th>Date of birth</th>
+    <th>Email</th>
+    <th>Height</th>
+    <th>Shoes</th>
+    <th>Hair</th>
+    <th>Eyes</th>
+    <th>Confirmed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @men.each do |man| %>
+  <tr>
+    <td><%= man.full_name %></td>
+    <td><%= man.date_of_birth %></td>
+    <td><%= man.email %></td>
+    <td><%= man.height %></td>
+    <td><%= man.shoes %></td>
+    <td><%= man.hair %></td>
+    <td><%= man.eyes %></td>
+    <td><%= man.confirmed %></td>
+    <td><%= link_to 'Show', man %></td>
+    <td><%= link_to 'Edit', edit_man_path(man) %></td>
+    <td><%= link_to 'Destroy', man, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Man', new_man_path %>
