@@ -2,7 +2,8 @@ class WomenController < ApplicationController
   # GET /women
   # GET /women.json
   def index
-    @women = Woman.all
+    @search = Woman.search(params[:search]) 
+    @women = @search.all
 
     respond_to do |format|
       format.html # index.html.erb

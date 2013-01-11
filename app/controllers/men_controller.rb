@@ -2,7 +2,8 @@ class MenController < ApplicationController
   # GET /men
   # GET /men.json
   def index
-    @men = Man.all
+    @search = Man.search(params[:search]) 
+    @men = @search.all
 
     respond_to do |format|
       format.html # index.html.erb
