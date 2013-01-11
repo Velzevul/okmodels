@@ -1,4 +1,10 @@
 Okmodelagency::Application.routes.draw do
+  get "main/home"
+
+  get "main/contact"
+
+  get "main/latest"
+
   resources :children
 
 
