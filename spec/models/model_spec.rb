@@ -62,4 +62,23 @@ describe Model do
       Model.latest(5).should eq(@models[-5..-1].reverse)
     end
   end
+
+  describe 'associations' do
+    it "has many photos" do
+      Model.new.should respond_to(:photos)
+    end
+
+    it "returns photos" do
+      non_related_photo = FactoryGirl.create(:photo)
+      model = FactoryGirl.create(:model, :with_photos)
+      model.photos.should eq(Photo.all - [non_related_photo])
+    end
+
+    it "should delete all associated photo on model destroy" do
+      m = FactoryGirl.create(:model, :with_photos)
+      Photo.where(:model_id => m.id).should_not be_blank
+      m.destroy
+      Photo.where(:model_id => m.id).should be_blank
+    end
+  end
 end

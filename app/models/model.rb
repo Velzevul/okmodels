@@ -10,6 +10,8 @@ class Model < ActiveRecord::Base
   scope :nonconfirmed, lambda { where(:confirmed => false) }
   scope :latest, lambda {|n| limit(n)}
 
+  has_many :photos, :dependent => :destroy
+
 private
 
   def birth_date_should_be_in_the_past 
