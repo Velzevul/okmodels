@@ -19,4 +19,15 @@ describe WomenController do
     end
   end
 
+  describe "POST create" do
+    it "accepts nested attributes for a Photo" do
+      attributes = FactoryGirl.attributes_for(:woman).merge!(:photos_attributes => [FactoryGirl.attributes_for(:photo)])
+      lambda {
+      lambda {
+          post :create, {:woman => attributes}
+      }.should change(Woman, :count).by(1)
+      }.should change(Photo, :count).by(1)
+    end
+  end
+
 end

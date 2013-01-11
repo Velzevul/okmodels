@@ -1,5 +1,5 @@
 class Model < ActiveRecord::Base
-  attr_accessible :confirmed, :date_of_birth, :email, :eyes, :hair, :height, :full_name, :shoes
+  attr_accessible :confirmed, :date_of_birth, :email, :eyes, :hair, :height, :full_name, :shoes, :photos_attributes
 
   validates :date_of_birth, :email, :eyes, :hair, :height, :full_name, :shoes, :presence => true
   validates :shoes, :height, :numericality => {:greater_than => 0}
@@ -11,7 +11,7 @@ class Model < ActiveRecord::Base
   scope :latest, lambda {|n| limit(n)}
 
   has_many :photos, :dependent => :destroy
-
+  accepts_nested_attributes_for :photos
 private
 
   def birth_date_should_be_in_the_past 
