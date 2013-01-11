@@ -10,6 +10,16 @@ FactoryGirl.define do # TODO: DRY
     hair {["blond", "black", "brown"].sample}
     eyes {["blue", "brown", "grey", "green"].sample}
     confirmed true
+
+    trait :with_photos do
+      ignore do
+        photos_count 5
+      end
+
+      after(:create) do |model, evaluator|
+        FactoryGirl.create_list(:photo, evaluator.photos_count, model: model)
+      end
+    end
   end
 
   factory :woman do
@@ -24,6 +34,16 @@ FactoryGirl.define do # TODO: DRY
     hair {["blond", "black", "brown"].sample}
     eyes {["blue", "brown", "grey", "green"].sample}
     confirmed true
+
+    trait :with_photos do
+      ignore do
+        photos_count 5
+      end
+
+      after(:create) do |model, evaluator|
+        FactoryGirl.create_list(:photo, evaluator.photos_count, model: model)
+      end
+    end
   end
 
   factory :man do
@@ -35,6 +55,16 @@ FactoryGirl.define do # TODO: DRY
     hair {["blond", "black", "brown"].sample}
     eyes {["blue", "brown", "grey", "green"].sample}
     confirmed true
+
+    trait :with_photos do
+      ignore do
+        photos_count 5
+      end
+
+      after(:create) do |model, evaluator|
+        FactoryGirl.create_list(:photo, evaluator.photos_count, model: model)
+      end
+    end
   end
 
   factory :child do
@@ -46,5 +76,20 @@ FactoryGirl.define do # TODO: DRY
     hair {["blond", "black", "brown"].sample}
     eyes {["blue", "brown", "grey", "green"].sample}
     confirmed true
+
+    trait :with_photos do
+      ignore do
+        photos_count 5
+      end
+
+      after(:create) do |model, evaluator|
+        FactoryGirl.create_list(:photo, evaluator.photos_count, model: model)
+      end
+    end
+  end
+
+  factory :photo do
+    image Rack::Test::UploadedFile.new(File.join(Rails.root,"spec/100x120.gif"),"image/gif")
+    model
   end
 end
