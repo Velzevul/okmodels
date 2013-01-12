@@ -26,6 +26,7 @@ class WomenController < ApplicationController
   # GET /women/new.json
   def new
     @woman = Woman.new
+    @photo = @woman.photos.build
 
     respond_to do |format|
       format.html # new.html.erb

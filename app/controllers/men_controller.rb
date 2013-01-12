@@ -26,6 +26,7 @@ class MenController < ApplicationController
   # GET /men/new.json
   def new
     @man = Man.new
+    @photo = @man.photos.build
 
     respond_to do |format|
       format.html # new.html.erb

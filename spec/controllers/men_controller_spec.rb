@@ -16,6 +16,13 @@ describe MenController do
     end
   end
 
+  describe "GET new" do
+    it "creates associated first photo" do
+      get :new
+      assigns(:photo).should_not be_blank
+    end
+  end
+
   describe "POST create" do
     it "accepts nested attributes for a Photo" do
       attributes = FactoryGirl.attributes_for(:man).merge!(:photos_attributes => [FactoryGirl.attributes_for(:photo)])

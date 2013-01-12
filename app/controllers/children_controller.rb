@@ -26,6 +26,7 @@ class ChildrenController < ApplicationController
   # GET /children/new.json
   def new
     @child = Child.new
+    @photo = @child.photos.build
 
     respond_to do |format|
       format.html # new.html.erb
