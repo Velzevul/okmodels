@@ -49,6 +49,7 @@ class ChildrenController < ApplicationController
         format.html { redirect_to @child, notice: 'Child was successfully created.' }
         format.json { render json: @child, status: :created, location: @child }
       else
+        @photo = @child.photos.build if @child.photos.blank?
         format.html { render action: "new" }
         format.json { render json: @child.errors, status: :unprocessable_entity }
       end

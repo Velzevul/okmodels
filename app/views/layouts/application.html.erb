@@ -8,7 +8,14 @@
 </head>
 <body>
 
-<%= yield %>
+<div class='sidebar'>
+  <%= yield :sidebar %>
+</div>
+
+<div class='content'>
+  <div id="notice"><%= notice %></div>
+  <%= yield %>
+</div>
 
 </body>
 </html>

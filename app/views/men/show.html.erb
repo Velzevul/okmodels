@@ -1,45 +1,10 @@
-<p id="notice"><%= notice %></p>
+<% content_for :sidebar do %>
+  <%= render :partial => 'shared/info', :locals => {:model => @man} %>
+  <div class='options'>
+    <%= link_to "edit", edit_man_path(@man) %><br>
+    <%= link_to "destroy", @man, :method => :delete, :data => {:confirm => "Delete this model record?"} %><br>
+    <%= link_to "back", men_path %>
+  </div>
+<% end %>
 
-<p>
-  <b>Full name:</b>
-  <%= @man.full_name %>
-</p>
-
-<p>
-  <b>Date of birth:</b>
-  <%= @man.date_of_birth %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @man.email %>
-</p>
-
-<p>
-  <b>Height:</b>
-  <%= @man.height %>
-</p>
-
-<p>
-  <b>Shoes:</b>
-  <%= @man.shoes %>
-</p>
-
-<p>
-  <b>Hair:</b>
-  <%= @man.hair %>
-</p>
-
-<p>
-  <b>Eyes:</b>
-  <%= @man.eyes %>
-</p>
-
-<p>
-  <b>Confirmed:</b>
-  <%= @man.confirmed %>
-</p>
-
-
-<%= link_to 'Edit', edit_man_path(@man) %> |
-<%= link_to 'Back', men_path %>
+<%= render :partial => "shared/photo", :collection => @man.photos %>

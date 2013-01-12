@@ -49,6 +49,7 @@ class WomenController < ApplicationController
         format.html { redirect_to @woman, notice: 'Woman was successfully created.' }
         format.json { render json: @woman, status: :created, location: @woman }
       else
+        @photo = @woman.photos.build if @woman.photos.blank?
         format.html { render action: "new" }
         format.json { render json: @woman.errors, status: :unprocessable_entity }
       end

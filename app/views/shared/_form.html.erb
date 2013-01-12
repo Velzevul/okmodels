@@ -1,0 +1,83 @@
+<%= form_for(model) do |f| %>
+  <% if model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(model.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+      <% model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :full_name %><br />
+    <%= f.text_field :full_name %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_birth %><br />
+    <%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year  %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br />
+    <%= f.number_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :shoes %><br />
+    <%= f.number_field :shoes %>
+  </div>
+  <div class="field">
+    <%= f.label :hair %><br />
+    <%= f.text_field :hair %>
+  </div>
+  <div class="field">
+    <%= f.label :eyes %><br />
+    <%= f.text_field :eyes %>
+  </div>
+  <div class="field">
+    <%= f.label :confirmed %><br />
+    <%= f.check_box :confirmed %>
+  </div>
+
+  <% if model.is_a? Woman %>
+    <div class="field">
+      <%= f.label :bust, "Breast" %><br />
+      <%= f.number_field :bust %>
+    </div>
+    <div class="field">
+      <%= f.label :waist %><br />
+      <%= f.number_field :waist %>
+    </div>
+    <div class="field">
+      <%= f.label :heaps %><br />
+      <%= f.number_field :heaps %>
+    </div>
+  <% end %>
+
+  <% if model.is_a? Man %>
+  <% end %>
+
+  <% if model.is_a? Child %>
+  <% end %>
+
+  <% if model.id.nil? %>
+    <%= f.fields_for :photos do |photo| %>
+      <div class='field'>
+        <%= photo.label :image %><br />
+        <%= photo.file_field :image %>
+      </div>
+    <% end %>
+  <% else %>
+  bla-bla-bla
+    <%= model.id %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

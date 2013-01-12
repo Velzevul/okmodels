@@ -1,2 +1,9 @@
-<h1>Main#latest</h1>
-<p>Find me in app/views/main/latest.html.erb</p>
+<% content_for :sidebar do %>
+  <%= render "shared/menu" %>
+<% end %>
+
+<div class=''>
+  <%= render :partial => "shared/model", :collection => @women %>
+  <%= render :partial => "shared/model", :collection => @men %>
+  <%= render :partial => "shared/model", :collection => @children %>
+</div>

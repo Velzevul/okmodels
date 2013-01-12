@@ -1,6 +1,10 @@
-<h1>Editing child</h1>
+<% content_for :sidebar do %>
+  <%= render :partial => 'shared/info', :locals => {:model => @child} %>
+  <div class='options'>
+    <%= link_to "edit", edit_child_path(@child) %><br>
+    <%= link_to "destroy", @child, :method => :delete, :data => {:confirm => "Delete this model record?"} %><br>
+    <%= link_to "back", children_path %>
+  </div>
+<% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @child %> |
-<%= link_to 'Back', children_path %>
+<%= render :partial => 'shared/form', :locals => {:model => @child} %>

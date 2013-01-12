@@ -1,0 +1,35 @@
+<%= form_for @search, :url => path, :html => {:method => :get} do |f| %>
+  <%= f.label :full_name_contains %><br>
+  <%= f.text_field :full_name_contains, :size => 15 %><br>
+
+  <%= f.label :height_eq %><br>
+  <%= f.number_field :height_eq, :size => 15 %><br>
+
+  <%= f.label :shoes_eq %><br>
+  <%= f.number_field :shoes_eq, :size => 15 %><br>
+
+  <%= f.label :hair_eq %><br>
+  <%= f.text_field :hair_eq, :size => 15 %><br>
+
+  <%= f.label :eyes_eq %><br>
+  <%= f.text_field :eyes_eq, :size => 15 %><br>
+
+  <% if woman %> <!-- optional params for women -->
+    <%= f.label :bust_eq %><br>
+    <%= f.text_field :bust_eq, :size => 15 %><br>
+
+    <%= f.label :heaps_eq %><br>
+    <%= f.text_field :heaps_eq, :size => 15 %><br>
+
+    <%= f.label :waist_eq %><br>
+    <%= f.text_field :waist_eq, :size => 15 %><br>
+  <% end %>
+
+  <% if man %> <!-- optional params for women -->
+  <% end %>
+
+  <% if child %> <!-- optional params for women -->
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
