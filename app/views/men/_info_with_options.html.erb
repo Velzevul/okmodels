@@ -1,0 +1,8 @@
+<%= render :partial => 'shared/info', :locals => {:model => man} %>
+<div class='options'>
+  <%= link_to_unless_current "show", man %><br>
+  <%= link_to_unless_current "add a photo", new_man_photo_path(man) %><br>
+  <%= link_to_unless_current "edit", edit_man_path(man) %><br>
+  <%= link_to "destroy", man, :method => :delete, :data => {:confirm => "Delete this man record?"} %><br>
+  <%= link_to "back", men_path %>
+</div>

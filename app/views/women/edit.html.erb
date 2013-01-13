@@ -1,10 +1,5 @@
 <% content_for :sidebar do %>
-  <%= render :partial => 'shared/info', :locals => {:model => @woman} %>
-  <div class='options'>
-    <%= link_to "edit", edit_woman_path(@woman) %><br>
-    <%= link_to "destroy", @woman, :method => :delete, :data => {:confirm => "Delete this model record?"} %><br>
-    <%= link_to "back", women_path %>
-  </div>
+  <%= render :partial => "info_with_options", :locals => {:woman => @woman} %>
 <% end %>
 
 <%= render :partial => 'shared/form', :locals => {:model => @woman} %>

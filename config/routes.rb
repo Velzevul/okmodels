@@ -5,6 +5,6 @@ Okmodelagency::Application.routes.draw do
   get "latest" => "main#latest", :as => "latest"
 
   resources :children, :women, :men do
-    # resources :photos, :only => [:create, :new, :destroy]
+    resources :photos, :only => [:create, :new, :destroy]
   end
 end

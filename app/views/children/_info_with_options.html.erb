@@ -1,0 +1,8 @@
+<%= render :partial => 'shared/info', :locals => {:model => child} %>
+<div class='options'>
+  <%= link_to_unless_current "show", child %><br>
+  <%= link_to_unless_current "add a photo", new_child_photo_path(child) %><br>
+  <%= link_to_unless_current "edit", edit_child_path(child) %><br>
+  <%= link_to "destroy", child, :method => :delete, :data => {:confirm => "Delete this child record?"} %><br>
+  <%= link_to "back", children_path %>
+</div>
