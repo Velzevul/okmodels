@@ -1,1 +1,4 @@
-<%= image_tag(photo.image.url(:thumb)) %>
+<div class='photo'>
+  <%= image_tag(photo.image.url(:thumb)) %>
+  <%= link_to "delete", path_to_delete, :method => :delete, :data => {:confirm => "Delete the photo?"}%>
+</div>
