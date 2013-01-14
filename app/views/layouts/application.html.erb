@@ -1,21 +1,31 @@
 <!DOCTYPE html>
-<html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <title>Okmodelagency</title>
+  <meta charset="utf-8" />
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+  <title>OK model studio</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class='sidebar'>
-  <%= yield :sidebar %>
+<div class='row'>
+  <div class='sidebar two columns'>
+    <%= link_to image_tag("logo.png", :class => "logo", :alt => "Ok Model Studio"), root_path %>
+    <%= yield :sidebar %>
+  </div>
+  <!-- models list -->
+  <div class='eight columns offset-by-two content'>
+    <%= yield %>
+  </div>
 </div>
 
-<div class='content'>
-  <div id="notice"><%= notice %></div>
-  <%= yield %>
-</div>
+<%= image_tag "bg-img.jpg", :id => 'bg' %>
 
 </body>
 </html>

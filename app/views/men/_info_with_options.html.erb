@@ -1,8 +1,8 @@
-<%= render :partial => 'shared/info', :locals => {:model => man} %>
-<div class='options'>
-  <%= link_to_unless_current "show", man %><br>
-  <%= link_to_unless_current "add a photo", new_man_photo_path(man) %><br>
-  <%= link_to_unless_current "edit", edit_man_path(man) %><br>
-  <%= link_to "destroy", man, :method => :delete, :data => {:confirm => "Delete this man record?"} %><br>
-  <%= link_to "back", men_path %>
+<div class='nav-panel'>
+  <%= render :partial => 'shared/info', :locals => {:model => man}, :class => 'forwardlink smalltext centered' %>
+  <%= link_to "show", man,:class => 'forwardlink smalltext centered' %><br>
+  <%= link_to "add a photo", new_man_photo_path(man),:class => 'forwardlink smalltext centered' %><br>
+  <%= link_to "edit", edit_man_path(man),:class => 'forwardlink smalltext centered' %><br>
+  <%= link_to "destroy", man, :method => :delete, :data => {:confirm => "Delete this man record?"},:class => 'forwardlink smalltext centered' %><br>
+  <%= link_to "back", men_path, :class => "backlink smalltext centered" %>
 </div>

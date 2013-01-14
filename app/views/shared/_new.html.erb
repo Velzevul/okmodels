@@ -1,5 +1,10 @@
-You are:<br>
-<%= link_to_unless_current "Man", new_man_path %><br>
-<%= link_to_unless_current "Woman", new_woman_path %><br>
-<%= link_to_unless_current "Child", new_child_path %><br>
-<%= link_to "back", root_path %>
+<div class='nav-panel'>
+  <ul class='left-align'>
+    <li><strong>You are:</strong></li>
+    <li><%= link_to_unless_current "Woman", new_woman_path, :class => "forwardlink" %></li>
+    <li><%= link_to_unless_current "Man", new_man_path, :class => "forwardlink" %></li>
+    <li><%= link_to_unless_current "Child", new_child_path, :class => "forwardlink" %></li>
+  </ul>
+
+  <%= link_to "back", root_path, :class => "centered backlink smalltext" %>
+</div>

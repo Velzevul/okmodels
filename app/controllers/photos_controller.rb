@@ -8,12 +8,12 @@ class PhotosController < ApplicationController
   end
 
   def create
-    model = @model_class.find(params[@model_type])
-    @photo = model.photos.build(params[:photo])
+    @model = @model_class.find(params[@model_type])
+    @photo = @model.photos.build(params[:photo])
     if @photo.save
-      redirect_to model
+      redirect_to @model
     else
-      render :action => "new"
+      render :template => @model_class.name.pluralize.downcase + "/new_photo"
     end
   end
 

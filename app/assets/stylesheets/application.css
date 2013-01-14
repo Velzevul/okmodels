@@ -9,26 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require foundation.css
+ *= require styling.css
  *= require_tree .
  */
-
-* {
-  margin:0;
-  padding:0;
-}
-
-html,body {
-  height:100%;
-}
-
-.sidebar {
-  width:20%;
-  min-height:100%;
-  float:left;
-}
-
-.content {
-  width:80%;
-  min-height:100%;
-  float:left;
-}

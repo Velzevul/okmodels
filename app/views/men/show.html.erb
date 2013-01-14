@@ -2,6 +2,8 @@
   <%= render :partial => "info_with_options", :locals => {:man => @man} %>
 <% end %>
 
-<% @man.photos.each do |photo| %>
-  <%= render :partial => "shared/photo", :locals => {:photo => photo, :path_to_delete => man_photo_path(@man,photo)} %>
-<% end %>
+<ul class='row' data-clearing>
+  <% @man.photos.each do |photo| %>
+    <%= render :partial => "shared/photo", :locals => {:photo => photo, :path_to_delete => man_photo_path(@man,photo)} %>
+  <% end %>
+</ul>

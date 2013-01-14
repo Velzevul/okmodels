@@ -1,13 +1,13 @@
-<div class='info'>
-  Full name: <%= model.full_name %><br>
-  Age: <%= Date.today.year - model.date_of_birth.year %><br>
-  Height: <%= model.height %><br>
-  Shoes: <%= model.shoes %><br>
-  Hair: <%= model.hair %><br>
-  Eyes: <%= model.eyes %><br>
+<ul class='left-align'>
+  <li><strong><%= model.full_name %></strong></li>
+  <li>Age: <%= Date.today.year - model.date_of_birth.year %></li>
+  <li>Height: <%= model.height %></li>
+  <li>Shoes: <%= model.shoes %></li>
+  <li>Hair: <%= model.hair %></li>
+  <li>Eyes: <%= model.eyes %></li>
   <% if model.is_a? Woman %>
-    Breast: <%= model.bust %><br>
-    Waist: <%= model.waist %><br>
-    Heaps: <%= model.heaps %>
+    <li>Breast: <%= model.bust %></li>
+    <li>Waist: <%= model.waist %></li>
+    <li>Heaps: <%= model.heaps %></li>
   <% end %>
-</div>
+</ul>

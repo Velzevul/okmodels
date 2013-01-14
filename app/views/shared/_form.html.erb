@@ -1,62 +1,28 @@
-<%= form_for(model) do |f| %>
-  <% if model.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(model.errors.count, "error") %> prohibited this entry from being saved:</h2>
-
-      <ul>
-      <% model.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<% if model.errors.any? %>
+  <% model.errors.full_messages.each do |msg| %>
+    <div class='error'>
+      <%= msg %>
     </div>
   <% end %>
+<% end %>
 
-  <div class="field">
-    <%= f.label :full_name %><br />
-    <%= f.text_field :full_name %>
+<%= form_for(model) do |f| %>
+
+  <%= f.text_field :full_name, :placeholder => "Full name" %>
+  <div class="field date-select-wrapper">
+    <%= f.label :date_of_birth, "Birthday:" %><%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year  %>
   </div>
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year  %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :height %><br />
-    <%= f.number_field :height %>
-  </div>
-  <div class="field">
-    <%= f.label :shoes %><br />
-    <%= f.number_field :shoes %>
-  </div>
-  <div class="field">
-    <%= f.label :hair %><br />
-    <%= f.text_field :hair %>
-  </div>
-  <div class="field">
-    <%= f.label :eyes %><br />
-    <%= f.text_field :eyes %>
-  </div>
-  <div class="field">
-    <%= f.label :confirmed %><br />
-    <%= f.check_box :confirmed %>
-  </div>
+  <%= f.text_field :email, :placeholder => "Email" %>
+  <%= f.number_field :height, :placeholder => "Height" %>
+  <%= f.number_field :shoes, :placeholder => "Shoes" %>
+  <%= f.text_field :hair, :placeholder => "Hair" %>
+  <%= f.text_field :eyes, :placeholder => "Eyes" %>
+  <%= f.check_box :confirmed %>
 
   <% if model.is_a? Woman %>
-    <div class="field">
-      <%= f.label :bust, "Breast" %><br />
-      <%= f.number_field :bust %>
-    </div>
-    <div class="field">
-      <%= f.label :waist %><br />
-      <%= f.number_field :waist %>
-    </div>
-    <div class="field">
-      <%= f.label :heaps %><br />
-      <%= f.number_field :heaps %>
-    </div>
+    <%= f.number_field :bust, :placeholder => "Breast" %>
+    <%= f.number_field :waist, :placeholder => "Waist" %>
+    <%= f.number_field :heaps, :placeholder => "Heaps" %>
   <% end %>
 
   <% if model.is_a? Man %>
@@ -67,17 +33,19 @@
 
   <% if model.id.nil? %>
     <%= f.fields_for :photos do |photo| %>
-      <div class='field'>
-        <%= photo.label :image %><br />
-        <%= photo.file_field :image %>
+      <div class='file-field-hack-parent'>
+        <%= f.file_field :image, :id => "real_file_field", :class => "file-field-hack-hidden", :onchange => "getElementById('fake_file_field').value = getElementById('real_file_field').value;" %>
+        <div class="row collapse file-field-hack-visible">
+          <div class="four columns">
+            <span class="prefix">Add photo</span>
+          </div>
+          <div class="six columns">
+            <input type="text" id="fake_file_field"/>
+          </div>
+        </div>
       </div>
     <% end %>
-  <% else %>
-  bla-bla-bla
-    <%= model.id %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit :class => "small secondary button" %>
 <% end %>

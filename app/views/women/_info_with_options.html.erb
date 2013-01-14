@@ -1,8 +1,8 @@
-<%= render :partial => 'shared/info', :locals => {:model => woman} %>
-<div class='options'>
-  <%= link_to_unless_current "show", woman %><br>
-  <%= link_to_unless_current "add a photo", new_woman_photo_path(woman) %><br>
-  <%= link_to_unless_current "edit", edit_woman_path(woman) %><br>
-  <%= link_to "destroy", woman, :method => :delete, :data => {:confirm => "Delete this woman record?"} %><br>
-  <%= link_to "back", women_path %>
+<div class='nav-panel'>
+  <%= render :partial => 'shared/info', :locals => {:model => woman},:class => 'forwardlink smalltext centered' %>
+  <%= link_to "show", woman,:class => 'forwardlink smalltext centered' %><br>
+  <%= link_to "add a photo", new_woman_photo_path(woman),:class => 'forwardlink smalltext centered' %><br>
+  <%= link_to "edit", edit_woman_path(woman),:class => 'forwardlink smalltext centered' %><br>
+  <%= link_to "destroy", woman, :method => :delete, :data => {:confirm => "Delete this woman record?"},:class => 'forwardlink smalltext centered' %><br>
+  <%= link_to "back", women_path, :class => "backlink smalltext centered" %>
 </div>

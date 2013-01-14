@@ -1,6 +1,12 @@
 <% content_for :sidebar do%>
-  <%= render :partial => "shared/filter", :locals => {:path => women_path, :woman => true, :man => false, :child => false} %>
-  <%= link_to "back", root_path %>
+  <div class='nav-panel'>
+    <div>
+      <%= render :partial => "shared/filter", :locals => {:path => women_path, :woman => true, :man => false, :child => false} %>
+      <%= link_to "back", root_path, :class => "backlink smalltext" %>
+    </div>
+  </div>
 <% end %>
 
-<%= render :partial => "shared/model", :collection => @women %>
+<div class='row'>
+  <%= render :partial => "shared/model", :collection => @women %>
+</div>
