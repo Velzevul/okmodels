@@ -8,8 +8,7 @@
 
 <%= form_for(model) do |f| %>
 
-  <%= f.text_field :first_name, :placeholder => "First name" %>
-  <%= f.text_field :family_name, :placeholder => "Family name" %>
+  <%= f.text_field :full_name, :placeholder => "Full name" %>
   <div class="field date-select-wrapper">
     <%= f.label :date_of_birth, "Birthday:" %><%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year  %>
   </div>

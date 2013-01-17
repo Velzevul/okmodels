@@ -14,18 +14,18 @@ describe WomenController do
   describe "GET new" do
     it "creates associated first photo" do
       get :new
-      assigns(:photo).should_not be_blank
+      assigns(:woman).photos.should_not be_blank
     end
   end
 
   describe "POST create" do
     it "accepts nested attributes for a Photo" do
-      attributes = FactoryGirl.attributes_for(:woman).merge!(:photos_attributes => [FactoryGirl.attributes_for(:photo)])
+      attributes = FactoryGirl.attributes_for(:woman).merge!(:photos_attributes => FactoryGirl.attributes_for_list(:photo,3))
       lambda {
       lambda {
           post :create, {:woman => attributes}
       }.should change(Woman, :count).by(1)
-      }.should change(Photo, :count).by(1)
+      }.should change(Photo, :count).by(3)
     end
   end
 

@@ -81,6 +81,8 @@ FactoryGirl.define do # TODO: DRY
     sequence("shoes") { 30 + Random.rand(0..8) }
     hair {["blond", "black", "brown"].sample}
     eyes {["blue", "brown", "grey", "green"].sample}
+    phone "(+380) 67 167 08 45"
+    city "Kiev"
     confirmed true
 
     trait :with_photos do
