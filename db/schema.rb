@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117193734) do
+ActiveRecord::Schema.define(:version => 20130117221041) do
 
   create_table "models", :force => true do |t|
     t.string   "full_name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130117193734) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "snapshot"
   end
 
   add_index "photos", ["model_id"], :name => "index_photos_on_model_id"
