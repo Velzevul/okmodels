@@ -13,7 +13,7 @@ class Model < ActiveRecord::Base
 
   default_scope order('created_at DESC')
   scope :confirmed, lambda { where(:confirmed => true) }
-  scope :nonconfirmed, lambda { where(:confirmed => false) }
+  scope :nonconfirmed, lambda { where(:confirmed => [false,nil]) }
   scope :latest, lambda {|n| confirmed.limit(n)}
 
   has_many :photos, :dependent => :destroy

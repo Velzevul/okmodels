@@ -34,7 +34,7 @@ describe Model do
     end
 
     it "rejects date_of_birth in the future" do
-      model = FactoryGirl.build(:model, :date_of_birth => Date.tomorrow)
+      model = FactoryGirl.build(:model, :date_of_birth => Date.today + 2.days)
       model.should_not be_valid
       model.errors[:date_of_birth].should_not be_blank
     end
@@ -43,7 +43,7 @@ describe Model do
   describe 'custom scopes' do
     before do
       @models = FactoryGirl.create_list(:model, 10)
-      @nonconfirmed = FactoryGirl.create(:model, :confirmed => false)
+      @nonconfirmed = FactoryGirl.create(:model, :confirmed => nil)
     end
 
     it "returns confirmed entries" do
