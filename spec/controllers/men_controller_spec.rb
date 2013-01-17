@@ -3,6 +3,13 @@ require 'spec_helper'
 describe MenController do
 
   describe "GET index" do
+    it "returnes only approved entries" do
+      approved = FactoryGirl.create(:man)
+      nonapproved = FactoryGirl.create(:man, :confirmed => false)
+      get :index
+      assigns(:men).should eq([approved])
+    end
+
     it "filters by parameters" do
       entries = FactoryGirl.create_list(:man, 5)
       first = entries.first

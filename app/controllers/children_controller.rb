@@ -2,7 +2,7 @@ class ChildrenController < ApplicationController
   # GET /children
   # GET /children.json
   def index
-    @search = Child.search(params[:search]) 
+    @search = Child.confirmed.search(params[:search]) 
     @children = @search.all
 
     respond_to do |format|
@@ -47,11 +47,9 @@ class ChildrenController < ApplicationController
 
     respond_to do |format|
       if @child.save
-        format.html { redirect_to @child, notice: 'Child was successfully created.' }
-        format.json { render json: @child, status: :created, location: @child }
+        format.html { redirect_to root_url, notice: 'Thank you for your application. It will be now reviewed by the administrator' }
       else
         format.html { render action: "new" }
-        format.json { render json: @child.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,10 +74,11 @@ class ChildrenController < ApplicationController
   # DELETE /children/1.json
   def destroy
     @child = Child.find(params[:id])
+    confirmed = @child.confirmed
     @child.destroy
 
     respond_to do |format|
-      format.html { redirect_to children_url }
+      format.html { redirect_to (confirmed)? children_url : new_applications_path }
       format.json { head :no_content }
     end
   end

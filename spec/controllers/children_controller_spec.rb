@@ -3,6 +3,13 @@ require 'spec_helper'
 describe ChildrenController do
 
   describe "GET index" do
+    it "returnes only approved entries" do
+      approved = FactoryGirl.create(:child)
+      nonapproved = FactoryGirl.create(:child, :confirmed => false)
+      get :index
+      assigns(:children).should eq([approved])
+    end
+
     it "filters by parameters" do
       entries = FactoryGirl.create_list(:child, 5)
       first = entries.first

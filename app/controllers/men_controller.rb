@@ -2,7 +2,7 @@ class MenController < ApplicationController
   # GET /men
   # GET /men.json
   def index
-    @search = Man.search(params[:search]) 
+    @search = Man.confirmed.search(params[:search]) 
     @men = @search.all
 
     respond_to do |format|
@@ -47,11 +47,9 @@ class MenController < ApplicationController
 
     respond_to do |format|
       if @man.save
-        format.html { redirect_to @man, notice: 'Man was successfully created.' }
-        format.json { render json: @man, status: :created, location: @man }
+        format.html { redirect_to root_url, notice: 'Thank you for your application. It will be now reviewed by the administrator' }
       else
         format.html { render action: "new" }
-        format.json { render json: @man.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,11 +74,11 @@ class MenController < ApplicationController
   # DELETE /men/1.json
   def destroy
     @man = Man.find(params[:id])
+    confirmed = @man.approved
     @man.destroy
 
     respond_to do |format|
-      format.html { redirect_to men_url }
-      format.json { head :no_content }
+      format.html { redirect_to (confirmed)? men_url : new_applications_url }
     end
   end
 end

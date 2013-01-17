@@ -25,5 +25,16 @@
     <%= yield %>
   </div>
 
+  <div class='adminbar'>
+    <% if user_signed_in? %>
+      <div>Hello, <%= current_user.email %></div>
+      <div><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></div>
+      <div><%= link_to "View new applications", new_applications_path %></div>
+      <%= yield :adminbar %>
+    <% else %>
+      <div><%= link_to "Sign in", new_user_session_path %> to see admin options</div>
+    <% end %>
+  </div>
+
 </body>
 </html>

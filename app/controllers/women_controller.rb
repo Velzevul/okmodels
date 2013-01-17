@@ -2,7 +2,7 @@ class WomenController < ApplicationController
   # GET /women
   # GET /women.json
   def index
-    @search = Woman.search(params[:search]) 
+    @search = Woman.confirmed.search(params[:search]) 
     @women = @search.all
 
     respond_to do |format|
@@ -47,11 +47,9 @@ class WomenController < ApplicationController
 
     respond_to do |format|
       if @woman.save
-        format.html { redirect_to @woman, notice: 'Woman was successfully created.' }
-        format.json { render json: @woman, status: :created, location: @woman }
+        format.html { redirect_to root_url, notice: 'Thank you for your application. It will be now reviewed by the administrator' }
       else
         format.html { render action: "new" }
-        format.json { render json: @woman.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,11 +74,11 @@ class WomenController < ApplicationController
   # DELETE /women/1.json
   def destroy
     @woman = Woman.find(params[:id])
+    confirmed = @woman.confirmed
     @woman.destroy
 
     respond_to do |format|
-      format.html { redirect_to women_url }
-      format.json { head :no_content }
+      format.html { redirect_to (confirmed)? women_url : new_applications_url }
     end
   end
 end

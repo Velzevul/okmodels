@@ -3,6 +3,9 @@
   <%= link_to "show", man,:class => 'forwardlink smalltext centered' %><br>
   <%= link_to "add a photo", new_man_photo_path(man),:class => 'forwardlink smalltext centered' %><br>
   <%= link_to "edit", edit_man_path(man),:class => 'forwardlink smalltext centered' %><br>
+  <% if !man.confirmed %>
+    <%= link_to "approve", approve_man_path(man) %><br>
+  <% end %>
   <%= link_to "destroy", man, :method => :delete, :data => {:confirm => "Delete this man record?"},:class => 'forwardlink smalltext centered' %><br>
-  <%= link_to "back", men_path, :class => "backlink smalltext centered" %>
+  <%= link_to "back", (man.confirmed)? men_path : new_applications_path, :class => "backlink smalltext centered" %>
 </div>

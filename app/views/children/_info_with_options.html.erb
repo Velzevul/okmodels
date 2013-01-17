@@ -3,6 +3,9 @@
   <%= link_to "show", child, :class => 'forwardlink smalltext centered' %><br>
   <%= link_to "add a photo", new_child_photo_path(child), :class => 'forwardlink smalltext centered' %><br>
   <%= link_to "edit", edit_child_path(child), :class => 'forwardlink smalltext centered' %><br>
+    <% if !child.confirmed %>
+    <%= link_to "approve", approve_child_path(child) %><br>
+  <% end %>
   <%= link_to "destroy", child, :method => :delete, :data => {:confirm => "Delete this child record?"}, :class => 'forwardlink smalltext centered' %><br>
-  <%= link_to "back", children_path, :class => "backlink smalltext centered" %>
+  <%= link_to "back", (child.confirmed)? children_path : new_applications_path, :class => "backlink smalltext centered" %>
 </div>
