@@ -26,7 +26,7 @@ class ChildrenController < ApplicationController
   # GET /children/new.json
   def new
     @child = Child.new
-    @photo = @child.photos.build
+    3.times { @child.photos.build }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,13 +43,13 @@ class ChildrenController < ApplicationController
   # POST /children.json
   def create
     @child = Child.new(params[:child])
+    (3 - @child.photos.length).times { @child.photos.build }
 
     respond_to do |format|
       if @child.save
         format.html { redirect_to @child, notice: 'Child was successfully created.' }
         format.json { render json: @child, status: :created, location: @child }
       else
-        @photo = @child.photos.build if @child.photos.blank?
         format.html { render action: "new" }
         format.json { render json: @child.errors, status: :unprocessable_entity }
       end

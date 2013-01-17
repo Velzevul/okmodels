@@ -26,7 +26,7 @@ class WomenController < ApplicationController
   # GET /women/new.json
   def new
     @woman = Woman.new
-    @photo = @woman.photos.build
+    3.times { @woman.photos.build }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,13 +43,13 @@ class WomenController < ApplicationController
   # POST /women.json
   def create
     @woman = Woman.new(params[:woman])
+    (3 - @woman.photos.length).times { @woman.photos.build }
 
     respond_to do |format|
       if @woman.save
         format.html { redirect_to @woman, notice: 'Woman was successfully created.' }
         format.json { render json: @woman, status: :created, location: @woman }
       else
-        @photo = @woman.photos.build if @woman.photos.blank?
         format.html { render action: "new" }
         format.json { render json: @woman.errors, status: :unprocessable_entity }
       end

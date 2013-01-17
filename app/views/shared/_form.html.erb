@@ -8,11 +8,14 @@
 
 <%= form_for(model) do |f| %>
 
-  <%= f.text_field :full_name, :placeholder => "Full name" %>
+  <%= f.text_field :first_name, :placeholder => "First name" %>
+  <%= f.text_field :family_name, :placeholder => "Family name" %>
   <div class="field date-select-wrapper">
     <%= f.label :date_of_birth, "Birthday:" %><%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year  %>
   </div>
   <%= f.text_field :email, :placeholder => "Email" %>
+  <%= f.text_field :city, :placeholder => "City" %>
+  <%= f.text_field :phone, :placeholder => "Phone" %>
   <%= f.number_field :height, :placeholder => "Height" %>
   <%= f.number_field :shoes, :placeholder => "Shoes" %>
   <%= f.text_field :hair, :placeholder => "Hair" %>
@@ -33,17 +36,7 @@
 
   <% if model.id.nil? %>
     <%= f.fields_for :photos do |photo| %>
-      <div class='file-field-hack-parent'>
-        <%= f.file_field :image, :id => "real_file_field", :class => "file-field-hack-hidden", :onchange => "getElementById('fake_file_field').value = getElementById('real_file_field').value;" %>
-        <div class="row collapse file-field-hack-visible">
-          <div class="four columns">
-            <span class="prefix">Add photo</span>
-          </div>
-          <div class="six columns">
-            <input type="text" id="fake_file_field"/>
-          </div>
-        </div>
-      </div>
+      <%= photo.file_field :image %>
     <% end %>
   <% end %>
 
