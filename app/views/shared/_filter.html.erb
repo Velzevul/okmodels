@@ -1,21 +1,5 @@
 <%= form_for @search, :url => path, :html => {:method => :get} do |f| %>
-  <%= f.text_field :full_name_contains, :size => 15, :placeholder => "Full name" %><br>
-  <%= f.number_field :height_eq, :size => 15, :placeholder => "Height" %><br>
-  <%= f.number_field :shoes_eq, :size => 15, :placeholder => "Shoes" %><br>
-  <%= f.text_field :hair_eq, :size => 15, :placeholder => "Hair" %><br>
-  <%= f.text_field :eyes_eq, :size => 15, :placeholder => "Shoes" %><br>
-
-  <% if woman %> <!-- optional params for women -->
-    <%= f.text_field :bust_eq, :size => 15, :placeholder => "Breast" %><br>
-    <%= f.text_field :heaps_eq, :size => 15, :placeholder => "Heaps" %><br>
-    <%= f.text_field :waist_eq, :size => 15, :placeholder => "Waist" %><br>
-  <% end %>
-
-  <% if man %> <!-- optional params for women -->
-  <% end %>
-
-  <% if child %> <!-- optional params for women -->
-  <% end %>
-
+  Full name: 
+  <%= f.collection_select(:full_name_equals, collection, :full_name, :full_name) %> 
   <%= f.submit "Filter", :class => "small secondary button" %>
 <% end %>

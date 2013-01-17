@@ -8,8 +8,12 @@
 
 <%= form_for(model) do |f| %>
 
-  <%= f.text_field :first_name, :placeholder => "First name" %><br>
-  <%= f.text_field :second_name, :placeholder => "Second name" %><br>
+  <% if model.full_name.blank? %>
+    <%= f.text_field :first_name, :placeholder => "First name" %><br>
+    <%= f.text_field :second_name, :placeholder => "Second name" %><br>
+  <% else %>
+    <%= f.text_field :full_name, :placeholder => "Full name" %><br>
+  <% end %>
   <%= f.label :date_of_birth, "Birthday:" %><%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year  %><br>
   <%= f.text_field :email, :placeholder => "Email" %><br>
   <%= f.text_field :city, :placeholder => "City" %><br>

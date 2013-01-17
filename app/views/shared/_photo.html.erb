@@ -1,4 +1,4 @@
-<li class='two columns'>
+<div>
   <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url %>
   <%= link_to "delete", path_to_delete, :method => :delete, :data => {:confirm => "Delete the photo?"}%>
-</li>
+</div>

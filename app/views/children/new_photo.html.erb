@@ -1,5 +1,3 @@
-<% content_for :sidebar do %>
-  <%= render :partial => "children/info_with_options", :locals => {:child => @model} %>
-<% end %>
-
 <%= render :partial => 'photos/form', :locals => {:model => @model, :send_path => child_photos_path(@model)} %>
+
+<%= render :partial => "children/info_with_options", :locals => {:child => @model} %>

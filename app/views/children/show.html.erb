@@ -1,9 +1,7 @@
-<% content_for :sidebar do %>
-  <%= render :partial => "info_with_options", :locals => {:child => @child} %>
-<% end %>
-
-<ul class='row' data-clearing>
+<div>
   <% @child.photos.each do |photo| %>
     <%= render :partial => "shared/photo", :locals => {:photo => photo, :path_to_delete => child_photo_path(@child,photo)} %>
   <% end %>
-</ul>
+</div>
+
+<%= render :partial => "info_with_options", :locals => {:child => @child} %>

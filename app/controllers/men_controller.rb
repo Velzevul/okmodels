@@ -74,7 +74,7 @@ class MenController < ApplicationController
   # DELETE /men/1.json
   def destroy
     @man = Man.find(params[:id])
-    confirmed = @man.approved
+    confirmed = @man.confirmed
     @man.destroy
 
     respond_to do |format|

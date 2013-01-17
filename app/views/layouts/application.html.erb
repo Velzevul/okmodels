@@ -18,7 +18,7 @@
   <div class="alert"><%= alert %></div>
 
   <div class='sidebar'>
-    <%= yield :sidebar %>
+    <%= render 'shared/menu' %>
   </div>
   <!-- models list -->
   <div class='content'>
@@ -30,7 +30,6 @@
       <div>Hello, <%= current_user.email %></div>
       <div><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></div>
       <div><%= link_to "View new applications", new_applications_path %></div>
-      <%= yield :adminbar %>
     <% else %>
       <div><%= link_to "Sign in", new_user_session_path %> to see admin options</div>
     <% end %>

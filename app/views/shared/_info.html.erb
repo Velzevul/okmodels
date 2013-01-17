@@ -1,13 +1,11 @@
-<ul class='left-align'>
-  <li><strong><%= model.full_name %></strong></li>
-  <li>Age: <%= Date.today.year - model.date_of_birth.year %></li>
-  <li>Height: <%= model.height %></li>
-  <li>Shoes: <%= model.shoes %></li>
-  <li>Hair: <%= model.hair %></li>
-  <li>Eyes: <%= model.eyes %></li>
-  <% if model.is_a? Woman %>
-    <li>Breast: <%= model.bust %></li>
-    <li>Waist: <%= model.waist %></li>
-    <li>Heaps: <%= model.heaps %></li>
-  <% end %>
-</ul>
+<strong><%= model.full_name %></strong>
+Age: <%= Date.today.year - model.date_of_birth.year %>
+Height: <%= model.height %>
+Shoes: <%= model.shoes %>
+Hair: <%= model.hair %>
+Eyes: <%= model.eyes %>
+<% if model.is_a? Woman %>
+  Breast: <%= model.bust %>
+  Waist: <%= model.waist %>
+  Heaps: <%= model.heaps %>
+<% end %>

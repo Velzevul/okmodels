@@ -1,5 +1,3 @@
-<% content_for :sidebar do %>
-  <%= render :partial => "info_with_options", :locals => {:man => @man} %>
-<% end %>
-
 <%= render :partial => 'shared/form', :locals => {:model => @man} %>
+
+<%= render :partial => "info_with_options", :locals => {:man => @man} %>
