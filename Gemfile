@@ -4,6 +4,8 @@ gem 'rails', '3.2.9'
 gem 'sqlite3'
 gem 'paperclip'
 gem 'meta_search'
+gem 'devise'
+gem 'cancan'
 
 group :test, :development do
   gem 'rspec-rails'

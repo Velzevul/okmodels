@@ -14,7 +14,9 @@
 </head>
 <body>
 
-<div class='row'>
+  <div class="notice"><%= notice %></div>
+  <div class="alert"><%= alert %></div>
+
   <div class='sidebar'>
     <%= yield :sidebar %>
   </div>
@@ -22,7 +24,6 @@
   <div class='content'>
     <%= yield %>
   </div>
-</div>
 
 </body>
 </html>

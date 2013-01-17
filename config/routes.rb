@@ -1,4 +1,6 @@
 Okmodelagency::Application.routes.draw do
+  devise_for :users
+
   root :to => "main#home"
 
   get "contact" => "main#contact", :as => "contact"
