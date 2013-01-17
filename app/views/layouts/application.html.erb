@@ -15,17 +15,14 @@
 <body>
 
 <div class='row'>
-  <div class='sidebar two columns'>
-    <%= link_to image_tag("logo.png", :class => "logo", :alt => "Ok Model Studio"), root_path %>
+  <div class='sidebar'>
     <%= yield :sidebar %>
   </div>
   <!-- models list -->
-  <div class='eight columns offset-by-two content'>
+  <div class='content'>
     <%= yield %>
   </div>
 </div>
-
-<%= image_tag "bg-img.jpg", :id => 'bg' %>
 
 </body>
 </html>

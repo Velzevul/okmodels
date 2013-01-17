@@ -8,23 +8,21 @@
 
 <%= form_for(model) do |f| %>
 
-  <%= f.text_field :full_name, :placeholder => "Full name" %>
-  <div class="field date-select-wrapper">
-    <%= f.label :date_of_birth, "Birthday:" %><%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year  %>
-  </div>
-  <%= f.text_field :email, :placeholder => "Email" %>
-  <%= f.text_field :city, :placeholder => "City" %>
-  <%= f.text_field :phone, :placeholder => "Phone" %>
-  <%= f.number_field :height, :placeholder => "Height" %>
-  <%= f.number_field :shoes, :placeholder => "Shoes" %>
-  <%= f.text_field :hair, :placeholder => "Hair" %>
-  <%= f.text_field :eyes, :placeholder => "Eyes" %>
-  <%= f.check_box :confirmed %>
+  <%= f.text_field :full_name, :placeholder => "Full name" %><br>
+  <%= f.label :date_of_birth, "Birthday:" %><%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year  %><br>
+  <%= f.text_field :email, :placeholder => "Email" %><br>
+  <%= f.text_field :city, :placeholder => "City" %><br>
+  <%= f.text_field :phone, :placeholder => "Phone" %><br>
+  <%= f.number_field :height, :placeholder => "Height" %><br>
+  <%= f.number_field :shoes, :placeholder => "Shoes" %><br>
+  <%= f.text_field :hair, :placeholder => "Hair" %><br>
+  <%= f.text_field :eyes, :placeholder => "Eyes" %><br>
+  <%= f.check_box :confirmed %><br>
 
   <% if model.is_a? Woman %>
-    <%= f.number_field :bust, :placeholder => "Breast" %>
-    <%= f.number_field :waist, :placeholder => "Waist" %>
-    <%= f.number_field :heaps, :placeholder => "Heaps" %>
+    <%= f.number_field :bust, :placeholder => "Breast" %><br>
+    <%= f.number_field :waist, :placeholder => "Waist" %><br>
+    <%= f.number_field :heaps, :placeholder => "Heaps" %><br>
   <% end %>
 
   <% if model.is_a? Man %>
@@ -35,7 +33,7 @@
 
   <% if model.id.nil? %>
     <%= f.fields_for :photos do |photo| %>
-      <%= photo.file_field :image %>
+      <%= photo.file_field :image %><br>
     <% end %>
   <% end %>
 
