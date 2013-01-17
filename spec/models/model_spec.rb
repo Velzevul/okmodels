@@ -81,4 +81,16 @@ describe Model do
       Photo.where(:model_id => m.id).should be_blank
     end
   end
+
+  describe 'callbacks' do
+    it "creates full name from first and second given" do
+      attributes = FactoryGirl.attributes_for(:man)
+      attributes.delete(:full_name)
+      attributes[:first_name] = "Jane"
+      attributes[:second_name] = "Kopf"
+      m = Model.new(attributes)
+      m.should be_valid
+      m.full_name.should eq("Jane Kopf")
+    end
+  end
 end
