@@ -9,6 +9,8 @@ FactoryGirl.define do # TODO: DRY
     sequence("shoes") { 38 + Random.rand(0..6) }
     hair {["blond", "black", "brown"].sample}
     eyes {["blue", "brown", "grey", "green"].sample}
+    phone "(+380) 67 167 08 45"
+    city "Kiev"
     confirmed true
 
     trait :with_photos do
@@ -33,6 +35,8 @@ FactoryGirl.define do # TODO: DRY
     heaps { 90 + Random.rand(-20..20) }
     hair {["blond", "black", "brown"].sample}
     eyes {["blue", "brown", "grey", "green"].sample}
+    phone "(+380) 67 167 08 45"
+    city "Kiev"
     confirmed true
 
     trait :with_photos do
@@ -54,6 +58,8 @@ FactoryGirl.define do # TODO: DRY
     sequence("shoes") { 40 + Random.rand(0..4) }
     hair {["blond", "black", "brown"].sample}
     eyes {["blue", "brown", "grey", "green"].sample}
+    phone "(+380) 67 167 08 45"
+    city "Kiev"
     confirmed true
 
     trait :with_photos do

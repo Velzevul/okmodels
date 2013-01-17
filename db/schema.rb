@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111155908) do
+ActiveRecord::Schema.define(:version => 20130117103731) do
 
   create_table "models", :force => true do |t|
     t.string   "full_name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20130111155908) do
     t.string   "type"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "city"
+    t.string   "phone"
   end
 
   add_index "models", ["type"], :name => "index_models_on_type"

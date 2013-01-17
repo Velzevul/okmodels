@@ -8,7 +8,7 @@ describe Model do
         @model.should_not be_valid
       end
 
-      %w(full_name date_of_birth email height shoes hair eyes).each do |attribute|
+      %w(full_name date_of_birth email phone city height shoes hair eyes).each do |attribute|
         it "has #{attribute} attribute" do 
           @model.errors[attribute].should_not be_blank
         end
@@ -46,8 +46,8 @@ describe Model do
       @nonconfirmed = FactoryGirl.create(:model, :confirmed => false)
     end
 
-    it "returns confirmed entries by default" do
-      Model.all.count.should eq(10)
+    it "returns confirmed entries" do
+      Model.confirmed.count.should eq(10)
     end
 
     it "returns non-confirmed entries" do
@@ -55,10 +55,10 @@ describe Model do
     end
 
     it "defaults ordering by created_at DESC" do
-      Model.all.should eq(@models.reverse)
+      Model.confirmed.should eq(@models.reverse)
     end
 
-    it "selects last 10 elements" do
+    it "selects last 5 elements" do
       Model.latest(5).should eq(@models[-5..-1].reverse)
     end
   end
