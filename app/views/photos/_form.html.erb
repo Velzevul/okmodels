@@ -6,5 +6,6 @@
 
 <%= form_for [model, @photo], :url => send_path do |f| %>
   <%= f.file_field :image, :id => "real_file_field", :class => "file-field-hack-hidden", :onchange => "getElementById('fake_file_field').value = getElementById('real_file_field').value;" %><br>
+  <%= f.check_box :snapshot %>
   <%= f.submit "Add photo", :class => "small secondary button" %>
 <% end %>
