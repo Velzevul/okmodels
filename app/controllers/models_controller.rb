@@ -21,6 +21,9 @@ class ModelsController < ApplicationController
   end
 
   def index
+    if params[:type] == "Child"
+      authorize! :read, Child
+    end
     @search = Model.where(:type => params[:type], :confirmed => true).search(params[:search])
     @models = @search.all
 
