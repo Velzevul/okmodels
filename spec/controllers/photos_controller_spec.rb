@@ -9,7 +9,7 @@ describe PhotosController do
 
       describe "GET 'new'" do
         it "builds a new photo for a #{model_type}" do
-          get :new, (model_type + "_id") => @model.id
+          get :new, :type => model_type.capitalize, (model_type + "_id") => @model.id
           assigns(:photo).should_not be_nil
           assigns(:photo).should be_a_new(Photo)  
         end
@@ -18,6 +18,7 @@ describe PhotosController do
       describe "POST 'create'" do
         before do
           @params = { :photo => FactoryGirl.attributes_for(:photo, :model => @model),
+                      :type => model_type.capitalize, 
                       model_type + "_id" => @model.id }
         end
 
@@ -57,7 +58,7 @@ describe PhotosController do
       describe "DELETE 'destroy" do
         before do
           FactoryGirl.create(:photo, :model => @model)
-          @params = {:id => Photo.first.id, model_type + "_id" => @model.id}
+          @params = {:id => Photo.first.id, model_type + "_id" => @model.id, :type => model_type.capitalize}
         end
 
         it "deletes a photo" do

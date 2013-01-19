@@ -1,0 +1,10 @@
+<div>
+  <% @model.photos.each do |photo| %>
+    <div>
+      <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url %>
+      <%= link_to "delete", [photo.model, photo], :method => :delete, :data => {:confirm => "Delete the photo?"}%>
+    </div>
+  <% end %>
+</div>
+
+<%= render "shared/model" %>

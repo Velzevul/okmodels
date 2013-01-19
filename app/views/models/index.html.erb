@@ -1,0 +1,11 @@
+<div>
+  <%= form_for @search, :url => "#{params[:type].downcase.pluralize}_path", :html => {:method => :get} do |f| %>
+    Full name: 
+    <%= f.collection_select(:full_name_equals, @models, :full_name, :full_name) %> 
+    <%= f.submit "filter"%>
+  <% end %>
+</div>
+
+<div>
+  <%= render :partial => "model_thumb", :collection => @models %>
+</div>

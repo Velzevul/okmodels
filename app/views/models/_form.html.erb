@@ -1,20 +1,21 @@
-<% if model.errors.any? %>
-  <% model.errors.full_messages.each do |msg| %>
+<% if @model.errors.any? %>
+  <% @model.errors.full_messages.each do |msg| %>
     <div class='error'>
       <%= msg %>
     </div>
   <% end %>
 <% end %>
 
-<%= form_for(model) do |f| %>
+<%= form_for(@model) do |f| %>
 
-  <% if model.full_name.blank? %>
+  <% if @model.full_name.blank? %>
     <%= f.text_field :first_name, :placeholder => "First name" %><br>
     <%= f.text_field :second_name, :placeholder => "Second name" %><br>
   <% else %>
     <%= f.text_field :full_name, :placeholder => "Full name" %><br>
   <% end %>
-  <%= f.label :date_of_birth, "Birthday:" %><%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year  %><br>
+  <%= f.label :date_of_birth, "Birthday:" %>
+  <%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year %><br>
   <%= f.text_field :email, :placeholder => "Email" %><br>
   <%= f.text_field :city, :placeholder => "City" %><br>
   <%= f.text_field :phone, :placeholder => "Phone" %><br>
@@ -23,19 +24,19 @@
   <%= f.text_field :hair, :placeholder => "Hair" %><br>
   <%= f.text_field :eyes, :placeholder => "Eyes" %><br>
 
-  <% if model.is_a? Woman %>
+  <% if @model.is_a? Woman %>
     <%= f.number_field :bust, :placeholder => "Breast" %><br>
     <%= f.number_field :waist, :placeholder => "Waist" %><br>
     <%= f.number_field :heaps, :placeholder => "Heaps" %><br>
   <% end %>
 
-  <% if model.is_a? Man %>
+  <% if @model.is_a? Man %>
   <% end %>
 
-  <% if model.is_a? Child %>
+  <% if @model.is_a? Child %>
   <% end %>
 
-  <% if model.id.nil? %>
+  <% if @model.id.nil? %>
     <%= f.fields_for :photos do |photo| %>
       <%= photo.file_field :image %><br>
     <% end %>

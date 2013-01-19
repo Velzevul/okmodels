@@ -1,5 +1,0 @@
-<%= form_for @search, :url => path, :html => {:method => :get} do |f| %>
-  Full name: 
-  <%= f.collection_select(:full_name_equals, collection, :full_name, :full_name) %> 
-  <%= f.submit "Filter", :class => "small secondary button" %>
-<% end %>
