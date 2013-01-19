@@ -1,4 +1,4 @@
 # require 'spec_helper'
 
-# describe ChildrenHelper do
+# describe ModelsHelper do
 # end

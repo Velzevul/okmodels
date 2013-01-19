@@ -9,21 +9,18 @@ class ModelsController < ApplicationController
   def latest
     @search = Model.latest(25).search(params[:search])
     @models = @search.all
-    @send_search_to = "latest_path"
     render :index
   end
 
   def new_applications
     @search = Model.nonconfirmed.search(params[:search])
     @models = @search.all
-    @send_search_to = "new_applications_path"
     render :index
   end
 
   def index
     @search = Model.where(:type => params[:type], :confirmed => true).search(params[:search])
     @models = @search.all
-    @send_search_to = "#{params[:type].downcase.pluralize}_path"
 
     respond_to do |format|
       format.html # index.html.erb

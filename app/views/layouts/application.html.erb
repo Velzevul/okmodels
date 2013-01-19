@@ -22,7 +22,9 @@
       <li><%= link_to_unless_current "New faces", latest_path %></li>
       <li><%= link_to_unless_current "Men", men_path %></li>
       <li><%= link_to_unless_current "Women", women_path %></li>
-      <li><%= link_to_unless_current "Children", children_path %></li>
+      <% if can? :read, Child %>
+        <li><%= link_to_unless_current "Children", children_path %></li>
+      <% end %>
       <li><%= link_to_unless_current "Become a model", new_woman_path %></li>
       <li><%= link_to_unless_current "Contact", contact_path %></li>
     </ul>
@@ -33,10 +35,12 @@
   </div>
 
   <div class='adminbar'>
-    <% if user_signed_in? %>
+    <% if current_user %>
       <div>Hello, <%= current_user.email %></div>
       <div><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></div>
-      <div><%= link_to "View new applications", new_applications_path %></div>
+      <% if can? :new_applications, Model  %>
+        <div><%= link_to "View new applications", new_applications_path %></div>
+      <% end %>
     <% else %>
       <div><%= link_to "Sign in", new_user_session_path %> to see admin options</div>
     <% end %>

@@ -11,13 +11,14 @@
     Heaps: <%= @model.heaps %>
   <% end %>
 
-  <% if @model.confirmed %>
-    <%= link_to "view", @model %>
-    <%= link_to "add a photo", send("new_#{@model.type.downcase}_photo_path", @model) %>
-    <%= link_to "edit", send("edit_#{@model.type.downcase}_path", @model) %>
-  <% else %>
-    <%= link_to "approve", send("approve_#{@model.type.downcase}_path", @model) %>
+  <% if can? :manage, Model %>
+    <% if @model.confirmed %>
+      <%= link_to "view", @model %>
+      <%= link_to "add a photo", send("new_#{@model.type.downcase}_photo_path", @model) %>
+      <%= link_to "edit", send("edit_#{@model.type.downcase}_path", @model) %>
+    <% else %>
+      <%= link_to "approve", send("approve_#{@model.type.downcase}_path", @model) %>
+    <% end %>
+    <%= link_to "destroy", @model, :method => :delete, :data => {:confirm => "Delete this man record?"} %>
   <% end %>
-  <%= link_to "destroy", @model, :method => :delete, :data => {:confirm => "Delete this man record?"} %>
-  <%= link_to "back", (@model.confirmed)? send("#{@model.type.downcase.pluralize}_path") : new_applications_path %>
 </div>

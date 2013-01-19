@@ -1,7 +1,9 @@
+<% @models.reject!{|model| model.type == "Child"} if cannot? :read, Child %>
+
 <div>
-  <%= form_for @search, :as => :model, :url => @send_search_to, :html => {:method => :get} do |f| %>
+  <%= form_for @search, :url => request.url, :html => {:method => :get} do |f| %>
     Full name: 
-    <%= f.collection_select(:full_name_equals, @models, :full_name, :full_name) %> 
+    <%= f.collection_select(:full_name_eq, @models, :full_name, :full_name) %> 
     <%= f.submit "filter"%>
   <% end %>
 </div>

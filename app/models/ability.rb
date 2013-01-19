@@ -7,12 +7,12 @@ class Ability
     if user.admin?
       can :manage, :all
     else
-      cannot :approve, :new_applications, Model
-      can :read, [Man, Woman], :confirmed => true
+      cannot [:approve, :new_applications], Model
+      can [:read, :latest], [Man, Woman], :confirmed => true
       can :read, Photo, :snapshot => false
       can :create, [Photo, Man, Woman, Child]
       if user.registered?
-        can :read, Child, :confirmed => true
+        can [:read, :latest], Child, :confirmed => true
         can :read, Photo
       end
     end
