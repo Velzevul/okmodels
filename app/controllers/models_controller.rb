@@ -1,6 +1,7 @@
 class ModelsController < ApplicationController
   def approve
-    @model = Model.find(params[:id])
+    @model = Model.where(:type => params[:type]).find(params[:id])
+    authorize! :approve, @model
     @model.confirmed = true
     @model.save
     redirect_to @model, :notice => "#{@model.full_name} has been approved"
@@ -13,6 +14,7 @@ class ModelsController < ApplicationController
   end
 
   def new_applications
+    authorize! :new_applications, Model
     @search = Model.nonconfirmed.search(params[:search])
     @models = @search.all
     render :index
@@ -28,7 +30,8 @@ class ModelsController < ApplicationController
   end
 
   def show
-    @model = Model.find(params[:id])
+    @model = Model.where(:type => params[:type]).find(params[:id])
+    authorize! :read, @model
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,7 +50,8 @@ class ModelsController < ApplicationController
   end
 
   def edit
-    @model = Model.find(params[:id])
+    @model = Model.where(:type => params[:type]).find(params[:id])
+    authorize! :edit, @model
   end
 
   def create
@@ -66,7 +70,8 @@ class ModelsController < ApplicationController
   end
 
   def update
-    @model = Model.find(params[:id])
+    @model = Model.where(:type => params[:type]).find(params[:id])
+    authorize! :update, @model
 
     respond_to do |format|
       if @model.update_attributes(params[@model.type.downcase])
@@ -78,7 +83,8 @@ class ModelsController < ApplicationController
   end
 
   def destroy
-    @model = Model.find(params[:id])
+    @model = Model.where(:type => params[:type]).find(params[:id])
+    authorize! :destroy, @model
     confirmed = @model.confirmed
     @model.destroy
 

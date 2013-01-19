@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_filter :determine_model_type
+  before_filter :check_access
 
   def new
     @model = Model.find(params[@model_type])
@@ -24,6 +25,10 @@ class PhotosController < ApplicationController
   end
 
 private
+  def check_access 
+    authorize! :manage, Photo
+  end
+
   def determine_model_type
     if params[:man_id]
       @model_type = "man_id"

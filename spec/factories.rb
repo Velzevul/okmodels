@@ -41,11 +41,13 @@ FactoryGirl.define do # TODO: DRY
 
     trait :with_photos do
       ignore do
-        photos_count 5
+        photos_count 8
+        shapshots_count 4
       end
 
       after(:create) do |model, evaluator|
-        FactoryGirl.create_list(:photo, evaluator.photos_count, model: model)
+        FactoryGirl.create_list(:photo, evaluator.photos_count, :female, model: model)
+        FactoryGirl.create_list(:photo, evaluator.shapshots_count, :female_snapshot, model: model)
       end
     end
   end
@@ -65,10 +67,12 @@ FactoryGirl.define do # TODO: DRY
     trait :with_photos do
       ignore do
         photos_count 5
+        shapshots_count 2
       end
 
       after(:create) do |model, evaluator|
-        FactoryGirl.create_list(:photo, evaluator.photos_count, model: model)
+        FactoryGirl.create_list(:photo, evaluator.photos_count, :male, model: model)
+        FactoryGirl.create_list(:photo, evaluator.shapshots_count, :male_snapshot, model: model)
       end
     end
   end
@@ -91,13 +95,37 @@ FactoryGirl.define do # TODO: DRY
       end
 
       after(:create) do |model, evaluator|
-        FactoryGirl.create_list(:photo, evaluator.photos_count, model: model)
+        FactoryGirl.create_list(:photo, evaluator.photos_count, :child, model: model)
       end
     end
   end
 
   factory :photo do
-    image Rack::Test::UploadedFile.new(File.join(Rails.root,"spec/100x120.gif"),"image/gif")
+    image Rack::Test::UploadedFile.new(File.join(Rails.root,"spec/dummies/dummy.gif"),"image/gif")
+    snapshot false
     model
+
+    trait :male do
+      sequence("image") {Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/dummies/male/#{Random.rand(0..17)}.jpg"), "image/jpg")}
+    end
+
+    trait :male_snapshot do
+      sequence("image") {|n| Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/dummies/male/snapshots/#{Random.rand(0..4)}.jpg"), "image/jpg")}
+      snapshot true
+    end
+
+    trait :female do
+      sequence("image") {|n| Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/dummies/female/#{Random.rand(0..25)}.jpg"), "image/jpg")}
+    end
+
+    trait :female_snapshot do
+      sequence("image") {|n| Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/dummies/female/snapshots/#{Random.rand(0..11)}.jpg"), "image/jpg")}
+      snapshot true
+    end
+
+    trait :child do
+      sequence("image") {|n| Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/dummies/child/#{Random.rand(0..12)}.jpg"), "image/jpg")}
+    end
+
   end
 end

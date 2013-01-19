@@ -42,7 +42,7 @@ describe ModelsController do
   describe "POST create" do
     before do
       @attributes = {:type => "Man", 
-                     :model => FactoryGirl.attributes_for(:man).merge!(:photos_attributes => FactoryGirl.attributes_for_list(:photo, 3))}
+                     :man => FactoryGirl.attributes_for(:man).merge!(:photos_attributes => FactoryGirl.attributes_for_list(:photo, 3))}
     end
 
     it "assigns model variable" do
@@ -73,7 +73,7 @@ describe ModelsController do
 
     context "on failure" do
       before do
-        @attributes[:model] = nil
+        @attributes[:man] = nil
       end
 
       it "re-renders form" do
@@ -96,7 +96,7 @@ describe ModelsController do
       @model = FactoryGirl.create(:man)
       @attributes = {:type => "Man",
                      :id => @model,
-                     :model => {:full_name => "Vasa Pupkin"}}
+                     :man => {:full_name => "Vasa Pupkin"}}
     end
 
     it "finds the requested record" do
@@ -118,7 +118,7 @@ describe ModelsController do
 
     context "on failure" do
       before do
-        @attributes[:model][:full_name] = nil
+        @attributes[:man][:full_name] = nil
       end
 
       it "does not change model" do
@@ -160,6 +160,42 @@ describe ModelsController do
         delete :destroy, @attributes
         response.should redirect_to new_applications_url
       end
+    end
+  end
+
+  describe "GET 'latest'" do
+    it "retrieves latest 25 models " do
+      entries = FactoryGirl.create_list(:model, 26)
+      get :latest
+      assigns(:models).should eq(entries[1..26].reverse)
+    end
+  end
+
+  describe "GET 'new_applications'" do
+    it "shows nonconfirmed models only" do
+      confirmed = FactoryGirl.create(:model)
+      nonconfirmed = FactoryGirl.create(:model, :confirmed => false)
+      get :new_applications
+      assigns(:models).should eq([nonconfirmed])
+    end
+  end
+
+  describe "GET 'approve'" do
+    before do
+      @model = FactoryGirl.create(:man, :confirmed => false)
+      get :approve, :type => "Man", :id => @model.id
+    end
+
+    it "finds requested model" do
+      assigns(:model).should eq(@model)
+    end
+
+    it "approves model" do
+      @model.reload.confirmed.should be_true
+    end
+
+    it "redirects to the model's page" do
+      request.should redirect_to @model
     end
   end
 end
