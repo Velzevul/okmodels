@@ -1,7 +1,29 @@
 class ModelsController < ApplicationController
+  def approve
+    @model = Model.find(params[:id])
+    @model.confirmed = true
+    @model.save
+    redirect_to @model, :notice => "#{@model.full_name} has been approved"
+  end
+
+  def latest
+    @search = Model.latest(25).search(params[:search])
+    @models = @search.all
+    @send_search_to = "latest_path"
+    render :index
+  end
+
+  def new_applications
+    @search = Model.nonconfirmed.search(params[:search])
+    @models = @search.all
+    @send_search_to = "new_applications_path"
+    render :index
+  end
+
   def index
     @search = Model.where(:type => params[:type], :confirmed => true).search(params[:search])
     @models = @search.all
+    @send_search_to = "#{params[:type].downcase.pluralize}_path"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,8 +39,9 @@ class ModelsController < ApplicationController
   end
 
   def new
-    @model = Model.new
-    @model.type = params[:type]
+    @model = Man.new if params[:type] == "Man"
+    @model = Woman.new if params[:type] == "Woman"
+    @model = Child.new if params[:type] == "Child"
     3.times { @model.photos.build }
 
     respond_to do |format|
@@ -31,8 +54,9 @@ class ModelsController < ApplicationController
   end
 
   def create
-    @model = Model.new(params[:model])
-    @model.type = params[:type]
+    @model = Man.new(params[:man]) if params[:type] == "Man"
+    @model = Woman.new(params[:woman]) if params[:type] == "Woman"
+    @model = Child.new(params[:child]) if params[:type] == "Child"
     (3 - @model.photos.length).times { @model.photos.build }
 
     respond_to do |format|
@@ -48,7 +72,7 @@ class ModelsController < ApplicationController
     @model = Model.find(params[:id])
 
     respond_to do |format|
-      if @model.update_attributes(params[:model])
+      if @model.update_attributes(params[@model.type.downcase])
         format.html { redirect_to @model, notice: 'Record was successfully updated.' }
       else
         format.html { render action: "edit" }

@@ -6,7 +6,7 @@
   <% end %>
 <% end %>
 
-<%= form_for(@model) do |f| %>
+<%= form_for @model do |f| %>
 
   <% if @model.full_name.blank? %>
     <%= f.text_field :first_name, :placeholder => "First name" %><br>
@@ -42,5 +42,5 @@
     <% end %>
   <% end %>
 
-  <%= f.submit :class => "small secondary button" %>
+  <%= f.submit %>
 <% end %>
