@@ -9,7 +9,7 @@ class Ability
     else
       cannot [:approve, :new_applications], Model
       can [:read, :latest], [Man, Woman], :confirmed => true
-      can :read, Photo, :snapshot => false
+      can :read, Photo, :snapshot => [nil,false]
       can :create, [Photo, Man, Woman, Child]
       if user.registered?
         can [:read, :latest], Child, :confirmed => true
