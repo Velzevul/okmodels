@@ -1,15 +1,20 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
-gem 'sqlite3'
 gem 'paperclip'
 gem 'meta_search'
 gem 'devise'
 gem 'cancan'
+gem 'thin'
+
+group :production do
+  gem 'pg'
+end
 
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'sqlite3'
 end
 
 group :test do
