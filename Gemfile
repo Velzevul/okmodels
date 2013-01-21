@@ -6,6 +6,7 @@ gem 'meta_search'
 gem 'devise'
 gem 'cancan'
 gem 'thin'
+gem 'foreman'
 
 group :production do
   gem 'pg'
