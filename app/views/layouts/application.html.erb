@@ -7,7 +7,7 @@
   <meta charset="utf-8" />
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
-  <title>OK model studio</title>
+  <title>OK Model Agency</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -18,7 +18,8 @@
   <div class="alert"><%= alert %></div>
 
   <div class='sidebar'>
-    <ul class='left-align'>
+    <img src='/images/logo.png' />
+    <ul>
       <li><%= link_to_unless_current "New faces", latest_path %></li>
       <li><%= link_to_unless_current "Men", men_path %></li>
       <li><%= link_to_unless_current "Women", women_path %></li>
@@ -34,24 +35,30 @@
     <%= yield %>
   </div>
 
-  <div class='adminbar'>
-    <% if current_user %>
-      <div>Hello, <%= current_user.email %></div>
-      <div><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></div>
-      <% if can? :new_applications, Model  %>
-        <div><%= link_to "View new applications", new_applications_path %></div>
+  <div class='adminpanel'>
+    <div class='trigger'></div>
+    <div class='options'>
+      <% if current_user %>
+        <div>Hello, <%= current_user.email %></div>
+        <% if can? :new_applications, Model  %>
+          <div><%= link_to "New applications", new_applications_path, :class => "button" %></div>
+        <% end %>
+        <div><%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "button" %></div>
+      <% else %>
+        <h3 class='centered'>Sign in</h3>
+        <%= form_for("user", :url => user_session_path) do |f| %>
+          <%= f.text_field :email, :placeholder => "Email", :size => 20 %>
+          <%= f.password_field :password, :placeholder => "Password", :size => 20 %>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, :class => "small" %>
+          <%= f.submit 'Sign in' %>
+          <%= link_to "Forgot your password?", new_password_path('user'), :class => "small centered" %>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= form_for("user", :url => user_session_path) do |f| %>
-        <%= f.text_field :email %>
-        <%= f.password_field :password %>
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-        <%= f.submit 'Sign in' %>
-        <%= link_to "Forgot your password?", new_password_path('user') %>
-      <% end %>
-    <% end %>
+    </div>
   </div>
+
+  <img src='/images/bg.jpg' id='bg' class=<%= yield :bgimgclass  %> />
 
 </body>
 </html>

@@ -8,26 +8,38 @@
 
 <%= form_for @model do |f| %>
 
-  <% if @model.full_name.blank? %>
-    <%= f.text_field :first_name, :placeholder => "First name" %><br>
-    <%= f.text_field :second_name, :placeholder => "Second name" %><br>
-  <% else %>
-    <%= f.text_field :full_name, :placeholder => "Full name" %><br>
-  <% end %>
-  <%= f.label :date_of_birth, "Birthday:" %>
-  <%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year %><br>
-  <%= f.text_field :email, :placeholder => "Email" %><br>
-  <%= f.text_field :city, :placeholder => "City" %><br>
-  <%= f.text_field :phone, :placeholder => "Phone" %><br>
-  <%= f.number_field :height, :placeholder => "Height" %><br>
-  <%= f.number_field :shoes, :placeholder => "Shoes" %><br>
-  <%= f.text_field :hair, :placeholder => "Hair" %><br>
-  <%= f.text_field :eyes, :placeholder => "Eyes" %><br>
+  <div class='fieldgroup'>
+    <div>Personal Information:</div>
+    <% if @model.full_name.blank? %>
+      <%= f.text_field :first_name, :placeholder => "First name", :class => "two-cols" %>
+      <%= f.text_field :second_name, :placeholder => "Second name", :class => "two-cols last" %>
+    <% else %>
+      <%= f.text_field :full_name, :placeholder => "Full name" %>
+    <% end %>
+    <%= f.label :date_of_birth, "Birthday:", :class => "date-select" %>
+    <%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year%>
+  </div>
+
+  <div  class='fieldgroup'>
+    <div>Contact Information:</div>
+    <%= f.text_field :email, :placeholder => "Email" %>
+    <%= f.text_field :city, :placeholder => "City", :class => "two-cols smaller" %>
+    <%= f.text_field :phone, :placeholder => "Phone", :class => "two-cols larger last" %>
+  </div>
+
+
+  <div class='fieldgroup'>
+    <div>Parameters:</div>
+    <%= f.text_field :height, :placeholder => "Height", :class => "two-cols with-suffics" %><div class='suffics'>cm</div>
+    <%= f.text_field :shoes, :placeholder => "Shoes", :class => "two-cols last" %>
+    <%= f.text_field :hair, :placeholder => "Hair", :class => "two-cols" %>
+    <%= f.text_field :eyes, :placeholder => "Eyes", :class => "two-cols last" %>
+  </div>
 
   <% if @model.is_a? Woman %>
-    <%= f.number_field :bust, :placeholder => "Breast" %><br>
-    <%= f.number_field :waist, :placeholder => "Waist" %><br>
-    <%= f.number_field :heaps, :placeholder => "Heaps" %><br>
+    <%= f.number_field :bust, :placeholder => "Breast" %>
+    <%= f.number_field :waist, :placeholder => "Waist" %>
+    <%= f.number_field :heaps, :placeholder => "Heaps" %>
   <% end %>
 
   <% if @model.is_a? Man %>
@@ -38,7 +50,7 @@
 
   <% if @model.id.nil? %>
     <%= f.fields_for :photos do |photo| %>
-      <%= photo.file_field :image %><br>
+      <%= photo.file_field :image %>
     <% end %>
   <% end %>
 

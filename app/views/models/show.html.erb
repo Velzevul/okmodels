@@ -1,14 +1,11 @@
-<div>
-  <% @model.photos.each do |photo| %>
+<%= render "shared/model" %>
+<% @model.photos.each do |photo| %>
+  <% if can? :read, photo %>
     <div>
-      <% if can? :read, photo %>
-        <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url %>
-        <% if can? :manage, photo %>
-          <%= link_to "delete", [photo.model, photo], :method => :delete, :data => {:confirm => "Delete the photo?"}%>
-        <% end %>
+      <%= image_tag(photo.image.url)%>
+      <% if can? :manage, photo %>
+        <%= link_to "delete", [photo.model, photo], :method => :delete, :data => {:confirm => "Delete the photo?"}%>
       <% end %>
     </div>
   <% end %>
-</div>
-
-<%= render "shared/model" %>
+<% end %>

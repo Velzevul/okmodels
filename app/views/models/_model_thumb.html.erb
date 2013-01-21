@@ -1,1 +1,5 @@
-<%= link_to image_tag(model_thumb.photos.first.image.url(:thumb)), model_thumb, :title => model_thumb.full_name %>
+<%= link_to(model_thumb, :class => "model-thumb", :title => model_thumb.full_name, :style => "background: url('#{model_thumb.photos.first.image.url(:thumb)}') center 20%;") do %>
+  <div class='name'>
+    <%= model_thumb.full_name %>
+  </div>
+<% end %>

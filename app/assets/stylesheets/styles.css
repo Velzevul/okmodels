@@ -1,0 +1,359 @@
+/*--------------- reset ----------------*/
+  * {
+    padding:0;
+    margin:0;
+    text-decoration:none;
+  }
+
+  img {
+    max-width:100%;
+  }
+
+  a,
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color:inherit;
+  }
+
+
+  body, html {
+    height:100%;
+  }
+
+/*--------------- general ----------------*/
+  body {
+    background: #000;
+    color:#fff;
+    font-family: eurostileregular;
+    line-height: 20px;
+  }
+
+  .fieldgroup {
+    width:70%;
+    margin: 25px auto;
+    overflow: hidden;
+  }
+
+  input[type='text'],
+  input[type='password'],
+  input[type='email'],
+  input[type='submit'],
+  input[type='number'],
+  .button,
+  .suffics {
+    background: rgba(255,255,255,0.15);
+    border:none;
+    font:inherit;
+    color:#fff;
+    display:block;
+    margin-top:5px;
+    padding:5px 5%;
+    width:90%;
+  }
+
+  select {
+    background: none;
+    border: none;
+    display:inline-block;
+    padding:5px 5%;
+    margin-top:5px;
+    font:inherit;
+    color:inherit;
+  }
+
+  label.date-select {
+    display:block;
+    float:left;
+    width:24%;
+    margin-top:5px;
+    padding:5px 0;
+    padding-left:1%;
+  }
+
+  select[name*='date_of_birth(1i)'] {
+    padding:5px 0;
+    width:23%;
+  }
+
+  select[name*='date_of_birth(2i)'] {
+    padding:5px 0;
+    width:35%;
+  }
+
+  select[name*='date_of_birth(3i)'] {
+    padding:5px 0;
+    width: 14%;
+  }
+
+  option {
+    color:black;
+    background:none;
+  }
+
+  input[type='submit'] {
+    padding:5px 30px;
+    margin-left:auto;
+    margin-right:auto;
+    width:initial;
+  }
+
+  input[type='checkbox'] {
+    margin:5px;
+  }
+
+  input.two-cols {
+    float:left;
+    width:38.5%;
+    margin-right:3%;
+  }
+  
+  input.two-cols.last {
+    margin-right:0;
+  }
+
+  input.two-cols.smaller {
+    width:30%;
+  }
+
+  input.two-cols.larger {
+    width:47%;
+  }
+
+  input.two-cols.with-suffics {
+    width:23%;
+    margin-right:0;
+  }
+
+  .suffics {
+    text-align:center;
+    float:left;
+    width:15.5%;
+    margin-right:3%;
+    padding:5px 0;
+    color:rgba(255,255,255,0.5);
+    box-shadow: inset 1px 0 0.5px rgba(255,255,255,0.1);
+  }
+
+  .small {
+    font-size:14px;
+    margin:5px;
+    opacity:0.5;
+  }
+
+  .centered {
+    display:block;
+    text-align:center;
+  }
+
+  .wide {
+    width:70%;
+  }
+
+  .narrow {
+    width:40%;
+  }
+
+  .panel {
+    position: relative;
+    top: 20px;
+    margin:0 auto;
+    background:rgba(0,0,0,0.8);
+    padding:20px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  h3 {
+    margin-bottom:15px;
+  }
+
+  p {
+    margin-bottom:10px;
+  }
+
+  a {
+    opacity: 0.5;
+    transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+  }
+
+  a:hover {
+    opacity:1;
+  }
+
+/*--------------- bg image styling ----------------*/
+  #bg {
+    transition: opacity 1s;
+    -o-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    position: fixed;
+    z-index: -5;
+    right: 0;
+    top: 0;
+    opacity:0.2;
+  }
+
+  #bg.visible {
+    opacity: 0.8;
+  }
+
+  .bgwidth {
+    max-width: 100%;
+    max-height: inherit;
+  }
+
+  .bgheight {
+    max-height: 100%;
+    max-width: inherit;
+  }
+
+/*--------------- sidebar styling ----------------*/
+  .sidebar {
+    position:fixed;
+    height:100%;
+    width:250px;
+    left:0;
+    top:0;
+    background:rgba(0,0,0,0.8);
+    border-right: 1px solid rgba(255,255,255,0.1);
+    z-index:5;
+  }
+
+  .sidebar ul {
+    width: 60%;
+    margin: 0 auto;
+    list-style: none;
+    font-size: 18px;
+  }
+
+  .sidebar ul li {
+    margin: 20px 0 20px 0;
+  }
+
+  .sidebar ul li a {
+    opacity:0.5;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+  }
+
+  .sidebar ul li a:hover,
+  .sidebar ul li a.active {
+    opacity:1;
+    text-shadow: 0 0 10px #fff;
+  }
+
+/*--------------- list of models ----------------*/
+
+  .content {
+    position:relative;
+    padding-left:260px;
+    padding-right: 30px;
+  }
+
+  .model-thumb {
+    opacity:1;
+    display: block;
+    float: left;
+    width:170px;
+    height:170px;
+    margin: 2px;
+    box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.1);
+    position:relative;
+    overflow: hidden;
+  }
+
+  .filter {
+    position:fixed;
+    z-index:5;
+    top:0;
+    left:270px;
+    height:60px;
+    width:730px;
+  }
+
+  .name {
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    position: absolute;
+    bottom: -100px;
+    padding-top:10px;
+    padding-bottom:10px;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+  }
+
+  a.model-thumb:hover .name {
+    bottom:0;
+  }
+
+  form#model_search {
+    width: 340px;
+    padding: 12px 0 12px 15px;
+  }
+
+  #model_search .select-wrapper {
+    width:160px;
+    overflow: hidden;
+    margin-left:10px;
+    background:rgba(255,255,255,0.5);
+    display:inline-block;
+  }
+
+  #model_search .select-wrapper select {
+    width:190px;
+    background: none;
+    border: none;
+    font:inherit;
+    padding: 3px;
+  }
+
+  #model_search input[type='submit'] {
+    display:none;
+  }
+
+/*--------------- admin panel ----------------*/
+
+  .adminpanel {
+    position: fixed;
+    width: 250px;
+    top: 0;
+    right:-230px;
+    background: rgba(0,0,0,0.9);
+    border-left: 1px solid rgba(255,255,255,0.1);
+    height: 100%;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+  }
+
+  .adminpanel.open {
+    right: 0;
+  }
+
+  .adminpanel .trigger {
+    height: 100%;
+    width: 20px;
+    float: left;
+    cursor:pointer;
+  }
+
+  .adminpanel .options {
+    float: left;
+    width: 185px;
+    padding: 15px 30px 15px 15px;
+  }
+
+  .adminpanel .trigger {
+    background: url('/images/arrow.png') center center no-repeat;
+    background-size: 90% auto;
+  }

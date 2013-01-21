@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   attr_accessible :image, :snapshot
 
   has_attached_file :image, 
-    :styles => { :thumb => "150x130>" }, 
+    :styles => { :thumb => "250x250^" }, 
     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
     :url => "/system/:attachment/:id/:style/:filename"
 
