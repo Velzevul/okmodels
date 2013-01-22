@@ -2,9 +2,7 @@
 
 <%= form_for @search, :url => request.url, :html => {:method => :get} do |f| %>
   Full name: 
-  <div class='select-wrapper'>
-    <%= f.collection_select(:full_name_eq, @models, :full_name, :full_name) %> 
-  </div>
+  <%= f.collection_select(:full_name_eq, @models, :full_name, :full_name) %> 
   <%= f.submit "filter"%>
 <% end %>
 

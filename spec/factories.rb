@@ -119,7 +119,7 @@ FactoryGirl.define do # TODO: DRY
     end
 
     trait :female_snapshot do
-      sequence("image") {|n| Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/dummies/female/snapshots/#{Random.rand(0..11)}.jpg"), "image/jpg")}
+      sequence("image") {|n| Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/dummies/female/snapshots/#{Random.rand(0..9)}.jpg"), "image/jpg")}
       snapshot true
     end
 

@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turn
 //= require scripts
 //= require_tree.

@@ -14,11 +14,11 @@
 </head>
 <body>
 
-  <div class="notice"><%= notice %></div>
-  <div class="alert"><%= alert %></div>
+  <% if notice %><div class="notice"><%= notice %></div><% end %>
+  <% if alert %><div class="alert"><%= alert %></div><% end %>
 
   <div class='sidebar'>
-    <img src='/images/logo.png' />
+    <%= link_to image_tag('/images/logo.png'), root_path, :class => "no-fade" %>
     <ul>
       <li><%= link_to_unless_current "New faces", latest_path %></li>
       <li><%= link_to_unless_current "Men", men_path %></li>

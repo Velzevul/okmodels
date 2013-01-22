@@ -27,32 +27,30 @@
     <%= f.text_field :phone, :placeholder => "Phone", :class => "two-cols larger last" %>
   </div>
 
-
   <div class='fieldgroup'>
     <div>Parameters:</div>
     <%= f.text_field :height, :placeholder => "Height", :class => "two-cols with-suffics" %><div class='suffics'>cm</div>
     <%= f.text_field :shoes, :placeholder => "Shoes", :class => "two-cols last" %>
     <%= f.text_field :hair, :placeholder => "Hair", :class => "two-cols" %>
     <%= f.text_field :eyes, :placeholder => "Eyes", :class => "two-cols last" %>
+    <% if @model.is_a? Woman %>
+      <%= f.number_field :bust, :placeholder => "Breast", :class => "three-cols" %>
+      <%= f.number_field :waist, :placeholder => "Waist", :class => "three-cols"  %>
+      <%= f.number_field :heaps, :placeholder => "Heaps", :class => "three-cols last"  %>
+    <% end %>
   </div>
 
-  <% if @model.is_a? Woman %>
-    <%= f.number_field :bust, :placeholder => "Breast" %>
-    <%= f.number_field :waist, :placeholder => "Waist" %>
-    <%= f.number_field :heaps, :placeholder => "Heaps" %>
-  <% end %>
-
-  <% if @model.is_a? Man %>
-  <% end %>
-
-  <% if @model.is_a? Child %>
-  <% end %>
-
   <% if @model.id.nil? %>
-    <%= f.fields_for :photos do |photo| %>
-      <%= photo.file_field :image %>
-    <% end %>
+    <div class='fieldgroup'>
+      <div>Upload three of your recent photos.<br><span class='small'>Photos must be in portrait format with aspect ratio 3:4. You should include at least one portrait photo and one full-size photo.</span></div>
+      <%= f.fields_for :photos do |photo| %>
+        <div class='file-field-wrapper'>
+          <%= photo.file_field :image, :class => 'real-file-field' %>
+          <div class='fake-file-field-prefix'>File:</div><input type='text' class='fake-file-field'/>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 
-  <%= f.submit %>
+  <%= f.submit "Submit application" %>
 <% end %>
