@@ -34,9 +34,9 @@
     <%= f.text_field :hair, :placeholder => "Hair", :class => "two-cols" %>
     <%= f.text_field :eyes, :placeholder => "Eyes", :class => "two-cols last" %>
     <% if @model.is_a? Woman %>
-      <%= f.number_field :bust, :placeholder => "Breast", :class => "three-cols" %>
-      <%= f.number_field :waist, :placeholder => "Waist", :class => "three-cols"  %>
-      <%= f.number_field :heaps, :placeholder => "Heaps", :class => "three-cols last"  %>
+      <%= f.text_field :bust, :placeholder => "Breast", :class => "three-cols" %>
+      <%= f.text_field :waist, :placeholder => "Waist", :class => "three-cols"  %>
+      <%= f.text_field :heaps, :placeholder => "Heaps", :class => "three-cols last"  %>
     <% end %>
   </div>
 
@@ -46,7 +46,7 @@
       <%= f.fields_for :photos do |photo| %>
         <div class='file-field-wrapper'>
           <%= photo.file_field :image, :class => 'real-file-field' %>
-          <div class='fake-file-field-prefix'>File:</div><input type='text' class='fake-file-field'/>
+          <div class='fake-file-field prefix'>File:</div><input type='text' class='fake-file-field with-prefix'/>
         </div>
       <% end %>
     </div>
