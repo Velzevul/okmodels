@@ -12,8 +12,8 @@ $(document).ready(function(){
     resize_images();
   });
 
-  $("#model_search select").change(function(){ 
-    $("#model_search input[type='submit']").trigger('click');
+  $("#model_search select").click(function(){ 
+    window.location = $(".model-thumb[name*='" + $(this).find('option:selected').val() + "']").attr('href');
   });
 
   $('.adminpanel .trigger').click(function(){
@@ -23,6 +23,7 @@ $(document).ready(function(){
   $('.real-file-field').change(function(){
     $(this).siblings('.fake-file-field').attr('value',$(this).attr('value'));
   });
+
 });
 
 function resizeBg() {

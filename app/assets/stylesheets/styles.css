@@ -243,7 +243,7 @@
     overflow: hidden;
     top: 20px;
     margin:0 auto;
-    background:rgba(0,0,0,0.8);
+    background:rgba(0,0,0,0.95);
     padding:20px;
     border: 1px solid rgba(255,255,255,0.1);
     margin-bottom:40px;
@@ -283,7 +283,7 @@
     z-index: -5;
     right: 0;
     top: 0;
-    opacity:0.2;
+    opacity:0.4;
   }
 
   #bg.visible {
@@ -354,7 +354,6 @@
     width:170px;
     height:170px;
     margin: 2px;
-    box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.1);
     position:relative;
     overflow: hidden;
   }
@@ -517,4 +516,56 @@
 
   .alert {
     background:rgba(198,15,19,0.5); 
+  }
+
+
+/*---------------- splash page -----------------*/
+
+  #splash {
+    background:#000;
+    position: absolute;
+    z-index:1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: slideTop 1s forwards;
+    -webkit-animation-delay: 2.5s;
+  }
+
+  #splash img {
+    position:absolute;
+    left:50%;
+    margin-left:-212px;
+    top:50%;
+    margin-top:-212px;
+    -webkit-animation: fromBack 1.5s ease-out;
+  }
+
+  @-webkit-keyframes fromBack{
+    0%{
+        -ms-transform: scale(0);
+        -moz-transform: scale(0);
+        -webkit-transform: scale(0);
+        -o-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+    }
+    100%{
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes slideTop{
+    0%{
+        -webkit-transform: translateY(0px);
+    }
+    100%{
+        -webkit-transform: translateY(-100%);
+    }
   }
