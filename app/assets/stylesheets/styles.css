@@ -286,7 +286,7 @@
     opacity:0.4;
   }
 
-  #bg.visible {
+  #bg.bright {
     opacity: 0.8;
   }
 
@@ -313,7 +313,7 @@
   }
 
   .sidebar ul {
-    width: 60%;
+    width: 65%;
     margin: 0 auto;
     list-style: none;
     font-size: 1.125em;
@@ -321,6 +321,8 @@
 
   .sidebar ul li {
     margin: 20px 0 20px 0;
+    font-weight: bold;
+    letter-spacing: 0.1em;
   }
 
   .sidebar ul li a {
@@ -334,7 +336,7 @@
   .sidebar ul li a:hover,
   .sidebar ul li a.active {
     opacity:1;
-    text-shadow: 0 0 10px #fff;
+    text-shadow: 0 0 20px #fff;
   }
 
 /*--------------- list of models ----------------*/
@@ -353,7 +355,7 @@
     float: left;
     width:170px;
     height:170px;
-    margin: 2px;
+    margin: 10px;
     position:relative;
     overflow: hidden;
   }
@@ -446,10 +448,32 @@
     margin:0 auto;
     position:relative;
     opacity:0;
-    -moz-transition:0.3s left;
-    -webkit-transition:0.3s left;
-    transition:0.3s left;
+    -moz-transition:0.5s left;
+    -webkit-transition:0.5s left;
+    -o-transition:0.5s left;
+    -ms-transition:0.5s left;
+    transition:0.5s left;
 
+  }
+
+  #magazine .prev,
+  #magazine .next {
+    display:block;
+    width:80px;
+    height:100%;
+    position:absolute;
+    z-index:5000;
+    top:0;
+    content:'';
+    cursor: pointer;
+  }
+
+  #magazine .prev {
+    left:0;
+  }
+
+  #magazine .next {
+    right:0;
   }
 
   #magazine .page {
@@ -471,17 +495,45 @@
     opacity:0.95;
   }
 
-  .page .info {
+  .info {
     position:absolute;
     background:rgba(0,0,0,0.9);
     bottom: 0;
     right: 0;
-    padding: 20px 40px;
+    height:70px;
+    width:100%;
     font-size: 1.2em;
-    line-height:1.6em;
+    line-height:1.5em;
   }
 
-  /*---------------- admin options ------------------*/
+  .info.big {
+    height:100px;
+  }
+
+  .info-inner {
+    padding-top: 10px;
+    margin-left:280px;
+    text-align:center;
+  }
+
+  .info-inner span,
+  .info-inner strong {
+    margin-right:15px;
+  }
+
+  .info-inner .options {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    width: 150px;
+  }
+
+  .info-inner .options a {
+    display:block;
+    text-align:right;
+  }
+
+/*---------------- admin options ------------------*/
 
   .page .delete-photo {
     position:absolute;
@@ -490,11 +542,11 @@
     padding:10px 20px;
   }
 
-  .page .delete-photo.even {
+  .page.even .delete-photo {
     right:0;
   }
 
-  .page .delete-photo.odd {
+  .page.odd .delete-photo {
     left:0;
   }
 
@@ -518,7 +570,6 @@
     background:rgba(198,15,19,0.5); 
   }
 
-
 /*---------------- splash page -----------------*/
 
   #splash {
@@ -530,7 +581,7 @@
     width: 100%;
     height: 100%;
     -webkit-animation: slideTop 1s forwards;
-    -webkit-animation-delay: 2.5s;
+    -webkit-animation-delay: 2s;
   }
 
   #splash img {
@@ -544,11 +595,11 @@
 
   @-webkit-keyframes fromBack{
     0%{
-        -ms-transform: scale(0);
-        -moz-transform: scale(0);
-        -webkit-transform: scale(0);
-        -o-transform: scale(0);
-        transform: scale(0);
+        -ms-transform: scale(0.5);
+        -moz-transform: scale(0.5);
+        -webkit-transform: scale(0.5);
+        -o-transform: scale(0.5);
+        transform: scale(0.5);
         opacity: 0;
     }
     100%{
@@ -563,9 +614,11 @@
 
   @-webkit-keyframes slideTop{
     0%{
-        -webkit-transform: translateY(0px);
+      opacity:1;
+      -webkit-transform: translateY(0px);
     }
     100%{
-        -webkit-transform: translateY(-100%);
+      opacity:0;
+      -webkit-transform: translateY(-100%);
     }
   }

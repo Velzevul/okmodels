@@ -1,21 +1,17 @@
 <div id='magazine' class="centerStart">
-  <div class='page'>
-    <%= image_tag(@model.photos.first.image.url) %>
-    <div class='info'>
-      <%= render "shared/model" %>
-    </div>
-    <% if can? :manage, @model.photos.first %>
-        <%= link_to "delete", [@model, @model.photos.first], :method => :delete, :class => "delete-photo odd", :data => {:confirm => "Delete the photo?"}%>
-        <% end %>
-    </div>
-  <% @model.photos[1..-1].each do |photo| %>
+  <% @model.photos.each do |photo| %>
     <% if can? :read, photo %>
-      <div class='page'>
+      <div class='page <%=cycle("odd","even")%>'>
         <%= image_tag(photo.image.url) %>
         <% if can? :manage, photo %>
-          <%= link_to "delete", [@model, photo], :method => :delete, :class => "delete-photo #{cycle('even','odd')}", :data => {:confirm => "Delete the photo?"}%>
+          <%= link_to "delete", [@model, photo], :method => :delete, :class => "delete-photo", :data => {:confirm => "Delete the photo?"}%>
         <% end %>
       </div>
     <% end %>
   <% end %>
+</div>
+<div class='info<%= " big" if can? :manage, Model %>' >
+  <div class='info-inner'>
+    <%= render "shared/model" %>
+  </div>
 </div>

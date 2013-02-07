@@ -23,7 +23,6 @@ $(document).ready(function(){
   $('.real-file-field').change(function(){
     $(this).siblings('.fake-file-field').attr('value',$(this).attr('value'));
   });
-
 });
 
 function resizeBg() {
@@ -39,7 +38,8 @@ function resizeBg() {
 
 function resize_images() {
   var parent = $('.content');
-  var w = Math.floor((parent.width()-24)/6);
+  //var w = Math.floor((parent.width()-24)/6);
+  var w = Math.floor((parent.width()-100)/5);
   $('a.model-thumb').each(function(){
     $(this).width(w);
     $(this).height(w);
@@ -58,7 +58,7 @@ $(function(){
     mag.turn();
     // turn.js defines its own events. We are listening
     // for the turned event so we can center the magazine
-    mag.bind('turned', function(e, page, pageObj) {
+    mag.bind('turn', function(e, page, pageObj) {
       if(page == 1 && $(this).data('done')){
         mag.addClass('centerStart');
       }
@@ -81,6 +81,17 @@ $(function(){
       else if (e.keyCode==39){
         mag.turn('next');
       }
+    });
+
+    mag.append('<div class="prev"></div>');
+    mag.append('<div class="next"></div>');
+
+    $('.next').click(function(){
+      mag.turn('next');
+    });
+
+    $('.prev').click(function(){
+      mag.turn('previous');
     });
   }
 });
