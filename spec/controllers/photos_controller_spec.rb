@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe PhotosController do
+  before do
+    sign_in FactoryGirl.create(:user, :admin)
+  end
+
   %w(man woman child).each do |model_type|
     describe "in case of #{model_type}" do
       before do

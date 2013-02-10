@@ -39,4 +39,7 @@ RSpec.configure do |config|
 
   # include paperclip matchers
   config.include Paperclip::Shoulda::Matchers
+
+  # Devise helpers
+  config.include Devise::TestHelpers, :type => :controller
 end
