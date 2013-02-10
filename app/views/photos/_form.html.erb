@@ -6,9 +6,12 @@
 
 <%= form_for [@model, @photo], :url => send("#{@model.type.downcase}_photos_path", @model) do |f| %>
   <div class='fieldgroup'>
+    <div>
+      <p class='small'>Photo must be in portrait format with aspect ratio 3:4. Photo size should be less than 2 Mb</p>
+    </div>
     <div class='file-field-wrapper'>
       <%= f.file_field :image, :class => 'real-file-field' %>
-      <div class='fake-file-field-prefix'>File:</div><input type='text' class='fake-file-field'/>
+      <div class='fake-file-field prefix'>File:</div><input type='text' class='fake-file-field with-prefix'/>
     </div>
     <%= f.check_box :snapshot %><%= f.label :snapshot %>
   </div>
