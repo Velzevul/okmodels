@@ -17,7 +17,9 @@
       <%= f.text_field :full_name, :placeholder => "Full name" %>
     <% end %>
     <%= f.label :date_of_birth, "Birthday:", :class => "date-select" %>
-    <%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year%>
+    <div class='select-wrapper birthday-select'>
+      <%= f.date_select :date_of_birth, :start_year => 1970, :end_year => Date.today.year%>
+    </div>
   </div>
 
   <div  class='fieldgroup'>
