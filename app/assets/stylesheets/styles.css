@@ -358,6 +358,24 @@
     margin: 10px;
     position:relative;
     overflow: hidden;
+    -webkit-filter: saturate(0.3);
+    -moz-filter: saturate(0.3);
+    -o-filter: saturate(0.3);
+    -ms-filter: saturate(0.3);
+    filter: saturate(0.3);
+    -webkit-transition: all 1s, height 0s, width 0s;
+    -o-transition: all 1s, height 0s, width 0s;
+    -moz-transition: all 1s, height 0s, width 0s;
+    -ms-transition: all 1s, height 0s, width 0s;
+    transition: all 1s, height 0s, width 0s;
+  }
+
+  .model-thumb:hover {
+    -webkit-filter: saturate(1);
+    -moz-filter: saturate(1);
+    -o-filter: saturate(1);
+    -ms-filter: saturate(1);
+    filter: saturate(1); 
   }
 
   .model-thumb:last-of-type {
