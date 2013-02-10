@@ -8,6 +8,6 @@ class Photo < ActiveRecord::Base
     :url => "/system/:attachment/:id/:style/:filename"
 
   validates_attachment  :image, :presence => true,
-                        :content_type => { :content_type => "image/jpg" },
+                        :content_type => { :content_type => ["image/jpg","image/jpeg","image/gif"] },
   									    :size => { :in => 0..2.megabytes }
 end
