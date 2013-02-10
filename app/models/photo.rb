@@ -7,5 +7,7 @@ class Photo < ActiveRecord::Base
     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
     :url => "/system/:attachment/:id/:style/:filename"
 
-  validates :image, :attachment_presence => true
+  validates_attachment  :image, :presence => true,
+                        :content_type => { :content_type => "image/jpg" },
+  									    :size => { :in => 0..2.megabytes }
 end

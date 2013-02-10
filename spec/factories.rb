@@ -101,7 +101,7 @@ FactoryGirl.define do # TODO: DRY
   end
 
   factory :photo do
-    image Rack::Test::UploadedFile.new(File.join(Rails.root,"spec/dummies/dummy.gif"),"image/gif")
+    image Rack::Test::UploadedFile.new(File.join(Rails.root,"spec/dummies/dummy.jpg"),"image/jpg")
     snapshot false
     model
 
