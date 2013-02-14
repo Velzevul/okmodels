@@ -1,6 +1,13 @@
 $(document).ready(function(){
   resize_images();
 
+  $('.panel select').dropkick();
+  $('#model_search select').dropkick({
+    change: function (value, label) {
+              window.location = $(".model-thumb[name*='" + $(this).find('option:selected').val() + "']").attr('href');
+            }
+  });
+
   // resize background on load
   $('#bg').load(function(){
     resizeBg();
@@ -12,9 +19,9 @@ $(document).ready(function(){
     resize_images();
   });
 
-  $("#model_search select").click(function(){ 
-    window.location = $(".model-thumb[name*='" + $(this).find('option:selected').val() + "']").attr('href');
-  });
+  // $("#model_search select").click(function(){ 
+  //   window.location = $(".model-thumb[name*='" + $(this).find('option:selected').val() + "']").attr('href');
+  // });
 
   $('.adminpanel .trigger').click(function(){
       $('.adminpanel').toggleClass('open');
@@ -39,7 +46,7 @@ function resizeBg() {
 function resize_images() {
   var parent = $('.content');
   //var w = Math.floor((parent.width()-24)/6);
-  var w = Math.floor((parent.width()-100)/5);
+  var w = Math.floor((parent.width()-105)/5);
   $('a.model-thumb').each(function(){
     $(this).width(w);
     $(this).height(w);

@@ -33,9 +33,15 @@
   }
 
   .fieldgroup {
-    width:70%;
-    margin: 25px auto 20px auto;
-    overflow: hidden;
+    width: 70%;
+    padding: 10px 0 10px 0;
+    margin: 0 auto;
+  }
+
+  .fieldgroup:after {
+    content:"";
+    clear:both;
+    display:block;
   }
 
   input[type='text'],
@@ -55,6 +61,10 @@
     margin-bottom: 4px;
     padding:5px 5%;
     border-radius:3px;
+  }
+
+  .dk_container a {
+    opacity:1;
   }
 
   input[type='submit'] {
@@ -115,7 +125,7 @@
     z-index:2;
   }
 
-  .select-wrapper {
+  /*.select-wrapper {
     width: 200px;
     background: rgba(255,255,255,0.1);
     margin-top:5px;
@@ -124,16 +134,16 @@
     color:inherit;
     border-radius:3px;
     display:inline-block;
-  }
+  }*/
 
-  .select-wrapper select { 
+  /*.select-wrapper select { 
     padding:5px 5%;
     background:none;
     border:none;
     font:inherit;
     color:inherit;
     width:100%;
-  }
+  }*/
 
   option {
     background:white;
@@ -148,34 +158,35 @@
     padding-left:1%;
   }
 
-  .select-wrapper.birthday-select {
+  .birthday-select {
     width:76%;
-  }
-
-  select[name*='date_of_birth'] {
+    margin-left:24%;
     padding:5px 0;
+  }
+
+  .birthday-select div {
     float:left;
-    padding-left:2%;
+    border-radius:0;
   }
 
-  select[name*='date_of_birth(1i)'] {
+  .birthday-select #dk_container_woman_date_of_birth_1i,
+  .birthday-select #dk_container_man_date_of_birth_1i,
+  .birthday-select #dk_container_child_date_of_birth_1i {
+    border-radius: 3px 0 0 3px;
     width:30%;
-    /*width:24%;*/
-    /*border-top-right-radius: 0;*/
-    /*border-bottom-right-radius: 0;*/
   }
 
-  select[name*='date_of_birth(2i)'] {
-    width:50%;
-    /*width:36%;*/
-    /*border-radius: 0.1px;*/
+  .birthday-select #dk_container_woman_date_of_birth_2i,
+  .birthday-select #dk_container_man_date_of_birth_2i,
+  .birthday-select #dk_container_child_date_of_birth_2i {
+    width:45%;
   }
 
-  select[name*='date_of_birth(3i)'] {
-    width:20%;
-    /*width: 16%;*/
-    /*border-top-left-radius: 0;*/
-    /*border-bottom-left-radius: 0;*/
+  .birthday-select #dk_container_woman_date_of_birth_3i,
+  .birthday-select #dk_container_man_date_of_birth_3i,
+  .birthday-select #dk_container_child_date_of_birth_3i {
+    border-radius: 0 3px 3px 0;
+    width:25%;
   }
 
   input[type='checkbox'] {
@@ -439,11 +450,12 @@
 
   form#model_search {
     width: 340px;
-    padding: 10px 0 12px 15px;
+    padding: 10px 0 4px 15px;
   }
 
-  form#model_search .select-wrapper {
+  form#model_search .dk_container {
     margin-left:10px;
+    width:200px;
   }
 
   #model_search input[type='submit'] {
@@ -554,7 +566,7 @@
 
   .info-inner {
     padding-top: 25px;
-    margin-left:251px;
+    margin-left: 251px;
     text-align:center;
   }
 
