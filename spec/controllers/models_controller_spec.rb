@@ -92,10 +92,10 @@ describe ModelsController do
   end
 
   describe "GET 'latest'" do
-    it "retrieves latest 20 models " do
-      entries = FactoryGirl.create_list(:model, 21)
+    it "retrieves latest 15 models " do
+      entries = FactoryGirl.create_list(:model, 16)
       get :latest
-      assigns(:models).should eq(entries[1..21].reverse)
+      assigns(:models).should eq(entries[1..16].reverse)
     end
   end
 

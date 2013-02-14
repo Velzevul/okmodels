@@ -333,12 +333,13 @@
     margin: 0 auto;
     list-style: none;
     font-size: 1.125em;
+    padding-top: 40px;
   }
 
   .sidebar ul li {
     margin: 25px 0;
     font-weight: bold;
-    /*letter-spacing: 0.1em;*/
+    letter-spacing: 0.1em;
   }
 
   .sidebar ul li a {
@@ -353,6 +354,17 @@
   .sidebar ul li a.active {
     opacity:1;
     text-shadow: 0 0 20px #fff;
+  }
+
+  .sidebar > a {
+    text-align: center;
+    display: block;
+    padding-top: 50px;
+  }
+
+  .sidebar > a img {
+    width: 75%;
+    opacity: 0.9;
   }
 
 /*--------------- list of models ----------------*/
@@ -478,7 +490,7 @@
 
 /*--------------- show model -----------------*/
   #magazine {
-    width:95%;
+    width:80%;
     margin:0 auto;
     position:relative;
     opacity:0;
@@ -521,7 +533,7 @@
 
   /* Center the magazine when the cover is shown */
   #magazine.centerStart {
-    left:-25%;
+    left:-20%;
   }
 
   .page img {
@@ -534,7 +546,7 @@
     background:rgba(0,0,0,0.9);
     bottom: 0;
     right: 0;
-    height:70px;
+    height:100px;
     width:100%;
     font-size: 1.2em;
     line-height:1.5em;
@@ -545,8 +557,8 @@
   }
 
   .info-inner {
-    padding-top: 10px;
-    margin-left:280px;
+    padding-top: 25px;
+    margin-left:251px;
     text-align:center;
   }
 
@@ -633,11 +645,11 @@
 
   @-webkit-keyframes fromBack{
     0%{
-        -ms-transform: scale(0.5);
-        -moz-transform: scale(0.5);
-        -webkit-transform: scale(0.5);
-        -o-transform: scale(0.5);
-        transform: scale(0.5);
+        -ms-transform: scale(0.8);
+        -moz-transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
         opacity: 0;
     }
     100%{

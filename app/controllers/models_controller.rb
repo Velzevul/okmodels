@@ -8,7 +8,7 @@ class ModelsController < ApplicationController
   end
 
   def latest
-    @search = Model.latest(20).search(params[:search])
+    @search = Model.latest(15).search(params[:search])
     @models = @search.all
     render :index
   end
