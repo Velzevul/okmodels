@@ -552,14 +552,14 @@
     line-height:1.5em;
   }
 
-  .info.big {
-    height:100px;
-  }
-
   .info-inner {
     padding-top: 25px;
     margin-left:251px;
     text-align:center;
+  }
+
+  .info.big .info-inner{
+    padding-top:10px;
   }
 
   .info-inner span,
