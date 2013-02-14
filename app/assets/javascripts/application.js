@@ -14,5 +14,8 @@
 //= require jquery_ujs
 //= require turn
 //= require jquery.dropkick
+//= require jquery-ui.min
+//= require jquery.mousewheel.min
+//= require jquery.mCustomScrollbar
 //= require scripts
 //= require_tree.

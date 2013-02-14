@@ -8,6 +8,8 @@ $(document).ready(function(){
             }
   });
 
+  $('.dk_options_inner').mCustomScrollbar({ scrollInertia: 0 })
+
   // resize background on load
   $('#bg').load(function(){
     resizeBg();

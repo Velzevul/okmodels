@@ -164,7 +164,7 @@
     padding:5px 0;
   }
 
-  .birthday-select div {
+  .birthday-select > div {
     float:left;
     border-radius:0;
   }
