@@ -117,6 +117,10 @@
   right: 1%;
   width: 97%;
 }
+  .dk_options li {
+    list-style:none;
+  }
+  
   .dk_options a,
   .dk_options a:link,
   .dk_options a:visited {
