@@ -522,7 +522,7 @@
     width:80px;
     height:100%;
     position:absolute;
-    z-index:9;
+    z-index:15;
     top:0;
     content:'';
     cursor: pointer;
