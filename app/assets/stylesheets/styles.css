@@ -278,6 +278,10 @@
     margin-bottom:40px;
   }
 
+  .become-a-model {
+    background: url('/images/models.png') center bottom no-repeat, rgba(0,0,0,0.95);
+  }
+
   h3 {
     margin-bottom:15px;
   }
@@ -504,7 +508,7 @@
 
 /*--------------- show model -----------------*/
   #magazine {
-    width:80%;
+    width:75%;
     margin:0 auto;
     position:relative;
     opacity:0;
