@@ -260,7 +260,7 @@
   }
 
   .wide {
-    width:80%;
+    width:810px;
   }
 
   .narrow {
@@ -279,7 +279,7 @@
   }
 
   .become-a-model {
-    background: url('/images/models.png') center bottom no-repeat, rgba(0,0,0,0.95);
+    background: url('/images/models.png') center center no-repeat, rgba(0,0,0,0.95);
   }
 
   h3 {
@@ -316,7 +316,7 @@
     z-index: -5;
     right: 0;
     top: 0;
-    opacity:0.4;
+    opacity:0.1;
   }
 
   #bg.bright {
