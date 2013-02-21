@@ -46,11 +46,8 @@ function resizeBg() {
 };
 
 function resize_images() {
-  var parent = $('.content');
-  //var w = Math.floor((parent.width()-24)/6);
-  var w = Math.floor((parent.width()-105)/5);
+  var w = Math.floor($('a.model-thumb').width());
   $('a.model-thumb').each(function(){
-    $(this).width(w);
     $(this).height(w);
   });
 }
