@@ -32,6 +32,10 @@ $(document).ready(function(){
   $('.real-file-field').change(function(){
     $(this).siblings('.fake-file-field').attr('value',$(this).attr('value'));
   });
+
+  $('#splash').click(function(){
+    $(this).fadeOut();
+  });
 });
 
 function resizeBg() {
