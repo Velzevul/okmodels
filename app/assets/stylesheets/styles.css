@@ -511,7 +511,7 @@
 
 /*--------------- show model -----------------*/
   #magazine {
-    width:75%;
+    width:73%;
     margin:0 auto;
     position:relative;
     opacity:0;
@@ -534,7 +534,7 @@
 
   /* Center the magazine when the cover is shown */
   #magazine.centerStart {
-    left:-20%;
+    left:-19%;
   }
 
   .page img {

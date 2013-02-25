@@ -63,7 +63,7 @@ $(function(){
     var aspect_ratio = 3/4;
     mag.height(mag.width()/(2*aspect_ratio));
     // center vertically
-    mag.css('top', ($(window).height()-mag.height() - 90 )/2);
+    mag.css('top', ($(window).height()-mag.height() - 70 )/2);
     // initiazlie turn.js on the #magazine div
     mag.turn();
     // turn.js defines its own events. We are listening
