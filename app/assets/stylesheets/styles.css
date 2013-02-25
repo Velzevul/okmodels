@@ -523,25 +523,6 @@
 
   }
 
-  #magazine .prev,
-  #magazine .next {
-    display:block;
-    width:50%;
-    height:100%;
-    position:absolute;
-    z-index:1000;
-    top:0;
-    content:'';
-  }
-
-  #magazine .prev {
-    left:0;
-  }
-
-  #magazine .next {
-    right:0;
-  }
-
   #magazine .page {
     position:absolute;
     width:50%;
@@ -605,16 +586,17 @@
 
   .page .delete-photo {
     position:absolute;
+    z-index:5000;
     top:0;
     background:rgba(0,0,0,0.9);
     padding:10px 20px;
   }
 
-  .page.even .delete-photo {
+  .page.previous .delete-photo {
     right:0;
   }
 
-  .page.odd .delete-photo {
+  .page.next .delete-photo {
     left:0;
   }
 

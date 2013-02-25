@@ -93,15 +93,5 @@ $(function(){
       }
     });
 
-    mag.append('<div class="prev"></div>');
-    mag.append('<div class="next"></div>');
-
-    $('.next').click(function(){
-      mag.turn('next');
-    });
-
-    $('.prev').click(function(){
-      mag.turn('previous');
-    });
   }
 });
