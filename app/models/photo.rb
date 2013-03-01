@@ -8,6 +8,8 @@ class Photo < ActiveRecord::Base
     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
     :url => "/system/:attachment/:id/:style/:filename"
 
+  default_scope order('created_at ASC')
+
   validates_attachment  :image, :presence => true,
                         :content_type => { :content_type => ["image/jpg","image/jpeg","image/gif"] },
   									    :size => { :in => 0..200.kilobytes }

@@ -8,7 +8,7 @@ describe Photo do
                  allowing('image/jpg', 'image/jpeg', 'image/gif').
                  rejecting('text/plain', 'text/xml')}
   it { should validate_attachment_size(:image).
-                 less_than(2.megabytes)}
+                 less_than(200.kilobytes)}
 
   describe "associations" do
     before do
