@@ -58,30 +58,35 @@
 
     #magazine {
         width:74%;
-        margin-top:15px;
+        // margin-top:15px;
 
         &.centerStart {
             left:-18.5%;
         }
     }
 
-    .info .small {
-        opacity: 0.6;
-    }
+    .info {
+        padding: 0.5em 0 1em 0;
 
-    .info-inner .options {
-        position: absolute;
-        top: 0;
-        right: 40px;
-        width: 150px;
+        .small {
+            opacity: 0.6;
+        }
+        
+        .info-inner .options {
+            position: absolute;
+            top: 0;
+            right: 40px;
+            width: 150px;
 
-        a {
-            background:none !important;
-            display:block !important;
-            text-align:right !important;
-            font-size:0.875em !important;
+            a {
+                background:none !important;
+                display:block !important;
+                text-align:right !important;
+                font-size:0.875em !important;
+            }
         }
     }
+
 
     .infogroup {
         display: inline-block;
