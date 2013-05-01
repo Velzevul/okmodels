@@ -1,0 +1,131 @@
+@media (min-width: 500px) {
+    .panel {
+        width: 400px;
+    }
+    
+    // aligh to left in one row
+    #model_search {
+        padding: 10px 0 4px 15px;
+        width: 100%;
+
+         .dk_container {
+            margin-left:10px;
+            width:200px;
+            display:inline-block !important;
+        }
+    }
+
+    // 2-in-a-row model thumbs
+    .model-thumb {
+        float:left;
+        width:45%;
+        max-width:250px;
+        margin:2.5%;
+
+        &:nth-of-type(2n+1) {
+            clear:both;
+        }
+    }
+
+    // put some inputs in one row
+    input {
+        margin-left:0;
+
+        &.last {
+            margin-right:0 !important;
+        }
+        
+        &.two-cols {
+            float:left;
+            width:38.5%;
+            margin-right:3%;
+        }
+
+        &.two-cols.smaller {
+            width:25%;
+        }
+
+        &.two-cols.larger {
+            width:52%;
+        }
+
+        &.three-cols {
+            float:left;
+            width:22.5%;
+            margin-right:1.25%;
+        }
+    }
+
+    .infogroup span:after {
+        display:none !important;
+    }
+
+    .info .options a {
+        display:inline-block !important;
+        width:120px;
+    }
+}
+
+@media (min-width: 590px) {
+    .panel {
+        width: 450px;
+    }
+    
+    // 3-in-a-row thumbs
+    .model-thumb {
+        float:left;
+        width:30%;
+        max-width:250px;
+        margin:1.5%;
+
+        &:nth-of-type(2n+1) {
+            clear:none;
+        }
+
+        &:nth-of-type(3n+1) {
+            clear:both;
+        }
+    }
+
+    // make some space for bg image ...
+    .fieldgroup {
+        width:70%;
+    }
+
+    // ... and show background image
+    .become-a-model {
+        background: url('/images/models.png') center center no-repeat, rgba(0,0,0,0.95);
+    }
+
+    .addressgroup span:after {
+        display:none !important;
+    }
+
+    #magazine {
+        width:90%;
+        margin:0 auto;
+        position:relative;
+        opacity:0;
+        @include transition-property(left);
+        @include transition-duration(0.5s);
+
+        &.centerStart {
+            left:-22.5%; // half of one page - 45%
+        }
+        
+        .page {
+            margin:0;
+            width:50%;
+            background-color:#000;
+
+            &.previous .delete-photo {
+                right:0;
+            }
+
+            &.next .delete-photo {
+                left:0;
+            }
+        }
+
+    }
+}

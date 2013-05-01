@@ -31,7 +31,7 @@
 
   <div class='fieldgroup'>
     <div>Parameters:</div>
-    <%= f.text_field :height, :placeholder => "Height", :class => "two-cols with-suffics" %><div class='suffics'>cm</div>
+    <%= f.text_field :height, :placeholder => "Height, cm", :class => "two-cols" %>
     <%= f.text_field :shoes, :placeholder => "Shoes", :class => "two-cols last" %>
     <%= f.text_field :hair, :placeholder => "Hair", :class => "two-cols" %>
     <%= f.text_field :eyes, :placeholder => "Eyes", :class => "two-cols last" %>
@@ -48,7 +48,7 @@
       <%= f.fields_for :photos do |photo| %>
         <div class='file-field-wrapper'>
           <%= photo.file_field :image, :class => 'real-file-field' %>
-          <div class='fake-file-field prefix'>File:</div><input type='text' class='fake-file-field with-prefix'/>
+          <div class='prefix'>File:</div><input type='text' class='fake-file-field'/>
         </div>
       <% end %>
     </div>

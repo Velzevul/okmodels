@@ -14,24 +14,27 @@
 </head>
 <body>
 
-  <div class='sidebar'>
-    <%= link_to image_tag('/images/logo.png'), root_path, :class => "no-fade" %>
-    <ul>
-      <li><%= link_to_unless_current "New faces", latest_path %></li>
-      <li><%= link_to_unless_current "Men", men_path %></li>
-      <li><%= link_to_unless_current "Women", women_path %></li>
-      <% if can? :read, Child %>
-        <li><%= link_to_unless_current "Children", children_path %></li>
-      <% end %>
-      <li><%= link_to_unless_current "Become a model", new_woman_path %></li>
-      <li><%= link_to_unless_current "Contact", contact_path %></li>
-    </ul>
-  </div>
   <!-- models list -->
-  <div class='content'>
-    <% if notice %><div class="notice"><%= notice %></div><% end %>
-    <% if alert %><div class="alert"><%= alert %></div><% end %>
-    <%= yield %>
+  <div style='overflow:hidden'>
+    <div class='content'>
+      <% if notice %><div class="notice"><%= notice %></div><% end %>
+      <% if alert %><div class="alert"><%= alert %></div><% end %>
+      <%= yield %>
+    </div>
+    
+    <div class='sidebar'>
+      <%= link_to image_tag('/images/logo.png'), root_path, :class => "no-fade" %>
+      <ul>
+        <li><%= link_to_unless_current "New faces", latest_path %></li>
+        <li><%= link_to_unless_current "Men", men_path %></li>
+        <li><%= link_to_unless_current "Women", women_path %></li>
+        <% if can? :read, Child %>
+          <li><%= link_to_unless_current "Children", children_path %></li>
+        <% end %>
+        <li><%= link_to_unless_current "Become a model", new_woman_path %></li>
+        <li><%= link_to_unless_current "Contact", contact_path %></li>
+      </ul>
+    </div>
   </div>
 
   <div class='adminpanel'>
@@ -46,7 +49,7 @@
       <% else %>
         <h3 class='centered'>Sign in</h3>
         <%= form_for("user", :url => user_session_path) do |f| %>
-          <%= f.text_field :email, :placeholder => "Email", :size => 20 %>
+          <%= f.email_field :email, :placeholder => "Email", :size => 20 %>
           <%= f.password_field :password, :placeholder => "Password", :size => 20 %>
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me, :class => "small" %>
@@ -57,7 +60,9 @@
     </div>
   </div>
 
-  <img src='/images/bg.jpg' id='bg' class=<%= yield :bgimgclass  %> />
+  <div class='bg-wrap'>
+    <img src='/images/bg.jpg' id='bg' class='<%=yield :bgimgclass%>'/>
+  </div>
 
 </body>
 </html>

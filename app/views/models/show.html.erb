@@ -1,3 +1,9 @@
+<div class='info<%= " big" if can? :manage, Model %>' >
+  <div class='info-inner'>
+    <%= render "shared/model" %>
+  </div>
+</div>
+
 <div id='magazine' class="centerStart">
   <% @model.photos.each do |photo| %>
     <% if can? :read, photo %>
@@ -10,9 +16,4 @@
       </div>
     <% end %>
   <% end %>
-</div>
-<div class='info<%= " big" if can? :manage, Model %>' >
-  <div class='info-inner'>
-    <%= render "shared/model" %>
-  </div>
 </div>
