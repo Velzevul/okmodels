@@ -11,12 +11,19 @@ $(function(){
 
     resize_images();
 
-    $('.panel select').dropkick();
-    $('#model_search select').dropkick({
-        change: function (value, label) {
-                            window.location = $(".model-thumb[name*='" + $(this).find('option:selected').val() + "']").attr('href');
-                        }
-    });
+
+    if ($('.panel select').length) {
+        $('.panel select').dropkick();
+    }
+
+
+    if ($('#model_search select').length) {
+        $('#model_search select').dropkick({
+            change: function (value, label) {
+                                window.location = $(".model-thumb[name*='" + $(this).find('option:selected').val() + "']").attr('href');
+                            }
+        });
+    }
 
     $('.dk_options_inner').mCustomScrollbar({ scrollInertia: 0 })
 
