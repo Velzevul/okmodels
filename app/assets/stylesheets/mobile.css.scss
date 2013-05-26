@@ -179,8 +179,14 @@ input[type='checkbox'] {
     margin: 5px;
 }
 
+textarea {
+    width: auto;
+    resize:vertical;
+}
+
 .button, 
 input[type='text'],
+textarea,
 input[type='password'],
 input[type='email'],
 input[type='number'], {

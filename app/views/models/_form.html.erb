@@ -42,6 +42,13 @@
     <% end %>
   </div>
 
+  <% if can? :manage, @model %>
+    <div class='fieldgroup'>
+      <%= f.check_box :mediastar %><%= f.label :mediastar, "is a mediastar?"%>
+      <%= f.text_area :description, :placeholder => "Write a mediastar description here..", :rows => "5" %>
+    </div> 
+  <% end %>
+
   <% if @model.id.nil? %>
     <div class='fieldgroup'>
       <div>Upload three of your recent photos.<br><span class='small'>Photos must be in portrait format with aspect ratio 3:4. You should include at least one portrait photo and one full-size photo. Photo size should be less than 2 Mb</span></div>
