@@ -1,6 +1,19 @@
-<%= link_to(model_thumb, :class => "model-thumb", :name => model_thumb.full_name) do %>
-  <%= image_tag model_thumb.photos.first.image.url(:thumb), :title => model_thumb.full_name %>
-  <div class='name'>
-    <%= model_thumb.full_name %>
-  </div>
+<% if @ms %>
+
+	<%= link_to(mediastar_path(model_thumb.id), :class => "model-thumb", :name => model_thumb.full_name) do %>
+	<%= image_tag model_thumb.photos.first.image.url(:thumb), :title => model_thumb.full_name %>
+	  <div class='name'>
+	    <%= model_thumb.full_name %>
+	  </div>
+	<% end %>
+
+<% else %>
+
+	<%= link_to(model_thumb, :class => "model-thumb", :name => model_thumb.full_name) do %>
+  	<%= image_tag model_thumb.photos.first.image.url(:thumb), :title => model_thumb.full_name %>
+	  <div class='name'>
+	    <%= model_thumb.full_name %>
+	  </div>
+	<% end %>
+
 <% end %>

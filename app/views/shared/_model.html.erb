@@ -1,32 +1,41 @@
 <strong><%= @model.full_name %></strong>
 <br>
-<div class='infogroup'>
-  <span class='small'>Height: <%= @model.height %> cm</span>
-  <span class='small'>Shoes: <%= @model.shoes %></span>
-  <span class='small'>Hair: <%= @model.hair %></span>
-  <span class='small'>Eyes: <%= @model.eyes %></span>
-</div>
-<% if @model.is_a? Woman %>
-<div class='infogroup'>
-  <span class='small'>Breast: <%= @model.bust %></span>
-  <span class='small'>Waist: <%= @model.waist %></span>
-  <span class='small'>Heaps: <%= @model.heaps %></span>
-</div>
-<% end %>
 
-<% if can? :manage, Model %>
-<div class='addressgroup'>
-  <span class='small'>City: <%= @model.city %></span>
-  <span class='small'>Phone: <%= @model.phone %></span>
-  <span class='small'>Email: <%= @model.email %></span>
-</div>
-  <div class='options'>
-    <% if @model.confirmed %>
-      <%= link_to "add a photo", send("new_#{@model.type.downcase}_photo_path", @model), :class => 'small' %>
-      <%= link_to "edit", send("edit_#{@model.type.downcase}_path", @model), :class => 'small' %>
-    <% else %>
-      <%= link_to "approve", send("approve_#{@model.type.downcase}_path", @model), :class => 'small' %>
-    <% end %>
-    <%= link_to "delete", @model, :method => :delete, :data => {:confirm => "delete this record?"}, :class => 'small' %>
+<% if @ms %>
+
+  <span class='small'><%= @model.description %></span>
+
+<% else %>
+
+  <div class='infogroup'>
+    <span class='small'>Height: <%= @model.height %> cm</span>
+    <span class='small'>Shoes: <%= @model.shoes %></span>
+    <span class='small'>Hair: <%= @model.hair %></span>
+    <span class='small'>Eyes: <%= @model.eyes %></span>
   </div>
+  <% if @model.is_a? Woman %>
+  <div class='infogroup'>
+    <span class='small'>Breast: <%= @model.bust %></span>
+    <span class='small'>Waist: <%= @model.waist %></span>
+    <span class='small'>Heaps: <%= @model.heaps %></span>
+  </div>
+  <% end %>
+
+  <% if can? :manage, Model %>
+  <div class='addressgroup'>
+    <span class='small'>City: <%= @model.city %></span>
+    <span class='small'>Phone: <%= @model.phone %></span>
+    <span class='small'>Email: <%= @model.email %></span>
+  </div>
+    <div class='options'>
+      <% if @model.confirmed %>
+        <%= link_to "add a photo", send("new_#{@model.type.downcase}_photo_path", @model), :class => 'small' %>
+        <%= link_to "edit", send("edit_#{@model.type.downcase}_path", @model), :class => 'small' %>
+      <% else %>
+        <%= link_to "approve", send("approve_#{@model.type.downcase}_path", @model), :class => 'small' %>
+      <% end %>
+      <%= link_to "delete", @model, :method => :delete, :data => {:confirm => "delete this record?"}, :class => 'small' %>
+    </div>
+  <% end %>
+
 <% end %>

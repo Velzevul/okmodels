@@ -13,6 +13,21 @@ class ModelsController < ApplicationController
     render :index
   end
 
+  def mediastars
+    @search = Model.mediastar.search(params[:search])
+    @models = @search.all
+    @ms = true
+    render :index
+  end
+
+  def show_mediastar
+    @model = Model.find(params[:id])
+    authorize! :read, @model
+    @ms = true
+
+    render :show
+  end
+
   def new_applications
     authorize! :new_applications, Model
     @search = Model.nonconfirmed.search(params[:search])

@@ -4,6 +4,8 @@ Okmodelagency::Application.routes.draw do
   root :to => "main#home"
 
   get "contact" => "main#contact", :as => "contact"
+  get "mediastars" => "models#mediastars", :as => "mediastars"
+  get "mediastar/:id" => "models#show_mediastar", :as => "mediastar"
   get "latest" => "models#latest", :as => "latest"
   get "new-applications" => "models#new_applications", :as => "new_applications"
 

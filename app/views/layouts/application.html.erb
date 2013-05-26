@@ -27,6 +27,7 @@
       <%= link_to image_tag('/images/logo.png'), root_path, :class => "no-fade" %>
       <ul>
         <li><%= link_to_unless_current "New faces", latest_path %></li>
+        <li><%= link_to_unless_current "Mediastars", mediastars_path %></li>
         <li><%= link_to_unless_current "Men", men_path %></li>
         <li><%= link_to_unless_current "Women", women_path %></li>
         <% if can? :read, Child %>
