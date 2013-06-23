@@ -4,7 +4,7 @@ class ModelsController < ApplicationController
     authorize! :approve, @model
     @model.confirmed = true
     @model.save
-    redirect_to @model, :notice => "#{@model.full_name} has been approved"
+    redirect_to @model.mediastar? ? mediastar_path(@model) : @model, :notice => "#{@model.full_name} has been approved"
   end
 
   def latest
@@ -39,7 +39,7 @@ class ModelsController < ApplicationController
     if params[:type] == "Child"
       authorize! :read, Child
     end
-    @search = Model.where(:type => params[:type], :confirmed => true).search(params[:search])
+    @search = Model.where(:type => params[:type], :confirmed => true, :mediastar => [false,nil]).search(params[:search])
     @models = @search.all
 
     respond_to do |format|
@@ -93,7 +93,7 @@ class ModelsController < ApplicationController
 
     respond_to do |format|
       if @model.update_attributes(params[@model.type.downcase])
-        format.html { redirect_to @model, notice: 'Record was successfully updated.' }
+        format.html { redirect_to @model.mediastar? ? mediastar_path(@model) : @model, notice: 'Record was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
